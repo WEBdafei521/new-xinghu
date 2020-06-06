@@ -1,12 +1,15 @@
 {
   "pages": [
-    "pages/home/index",
-    "pages/user/address/updata",
+    "pages/user/order/index",
+    "pages/user/replaceVisita/index",
+    "pages/user/index",
+    "pages/user/homePage/index",
     "pages/user/address/index",
+    "pages/user/address/updata",
     "pages/square/index",
+    "pages/home/index",
     "pages/VIP/index",
-    "pages/introduction/index",
-    "pages/user/index"
+    "pages/introduction/index"
   ],
   "subPackages": [],
   "window": {

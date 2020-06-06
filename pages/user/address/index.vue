@@ -31,7 +31,7 @@
 		<view class="l-bottoms">
 			<view class="l-change">
 				<view class="l-wx"><image class="images" src="../../../static/l-weixin.png" mode=""></image>微信导入</view>
-				<view class="l-add">添加新地址</view>
+				<view class="l-add" @tap="goUpadta">添加新地址</view>
 			</view>
 		</view>
 	</view>
@@ -46,7 +46,11 @@
 
 		},
 		methods: {
-
+			goUpadta(){
+				uni.navigateTo({
+					url:"./updata"
+				})
+			}
 		}
 	}
 </script>

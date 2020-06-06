@@ -2,7 +2,7 @@
 	<view class="l-container-user">
 		<view class="l-top-title">
 			<!-- back -->
-			<view class="l-top-back"><image class="images" src="../../static/user_back.png" mode=""></image></view>
+			<view class="l-top-back"><image class="images" src="https://img1.starfox.cn:9001/livefs/default/20200606/14/13/0/user_back.png" mode=""></image></view>
 			<view class="l-zanwei"></view>
 			<!-- userInfo -->
 			<view class="l-user-info l-my-flex-start">
@@ -100,7 +100,7 @@
 					<image class="images" src="../../static/l-car.png" mode=""></image>
 					<text class="l-tool-name">购物车</text>
 				</view> -->
-				<view class="l-tool-item">
+				<view class="l-tool-item" @tap="goAdress">
 					<image class="images" src="../../static/l-location.png" mode=""></image>
 					<text class="l-tool-name">收货地址</text>
 				</view>
@@ -116,7 +116,7 @@
 					<image class="images" src="../../static/l-invitation.png" mode=""></image>
 					<text class="l-tool-name">更绑邀请</text>
 				</view>
-				<view class="l-tool-item">
+				<view class="l-tool-item" @tap="goHomePage">
 					<image class="images" src="../../static/l-user-index.png" mode=""></image>
 					<text class="l-tool-name">个人主页</text>
 				</view>
@@ -174,7 +174,18 @@
 			
 		},
 		methods: {
-			
+			goAdress(){
+				console.log("-----")
+				uni.navigateTo({
+				    url: 'address/index'
+				});
+			},
+			goHomePage(){
+				console.log("-----")
+				uni.navigateTo({
+				    url: 'homePage/index'
+				});
+			},
 	
 		}
 	}

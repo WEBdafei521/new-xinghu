@@ -1,160 +1,70 @@
 <template>
-	<view class="content">
-		
+	<view class="content" :style="{ height: `${windowHeight}px`}">
 		<view class="l-title-top">
 			<lp-input :placeholder="placeholder" @search_inp="top_search"></lp-input>
 			<!--  -->
 			<view class="l-tabs-title">
-				<u-tabs :list="list" active-color="#D7B975" inactive-color="#333333" font-size="30" :is-scroll="false" :current="current" @change="change"></u-tabs>
+				<u-tabs :list="tabList" active-color="#D7B975" inactive-color="#333333" font-size="30" :is-scroll="false" :current="tabIndex" @change="change"></u-tabs>
 			</view>
 		</view>
-		<view class="l-zanwei"></view>
 		<!-- 全部列表 -->
-		<view class="l-main-list">
-			<view class="l-all-list">
-				<view class="l-all-item">
-					<!-- 回放 -->
-					<view class="l-top">
-						<!-- back img -->
-						<image class="images" src="../../static/room-bg.jpg" mode=""></image>
-						<view class="l-top-history">
-							<view class="l-sum">
-								<view class="l-btn">回放</view>
-								<view class="l-people">1.5W人观看</view>
-							</view>
-						</view>
-						<!-- 官方名称 -->
-						<view class="l-bottom-nickname">
-							<view class="l-name">
-								<view class="l-bottom-image"><image class="images" src="../../static/l-settion.png" mode=""></image></view>
-								<view class="l-bottom-name">
-									海之韵官方
-								</view>								
-							</view>
-						</view>
-					</view>
-					<view class="l-bottom-tittle">
-						<view class="l-name">
-							海之韵新品上新直播秀
-						</view>
-					</view>
-				</view>
-				
-				<view class="l-all-item">
-					<!-- 回放 -->
-					<view class="l-top">
-						<!-- back img -->
-						<image class="images" src="../../static/room-bg.jpg" mode=""></image>
-						<view class="l-top-history">
-							<view class="l-sum">
-								<view class="l-btn">回放</view>
-								<view class="l-people">1.5W人观看</view>
-							</view>
-						</view>
-						<!-- 官方名称 -->
-						<view class="l-bottom-nickname">
-							<view class="l-name">
-								<view class="l-bottom-image"><image class="images" src="../../static/l-settion.png" mode=""></image></view>
-								<view class="l-bottom-name">
-									海之韵官方
-								</view>								
-							</view>
-						</view>
-					</view>
-					<view class="l-bottom-tittle">
-						<view class="l-name">
-							海之韵新品上新直播秀
-						</view>
-					</view>
-				</view>
-				
-				<view class="l-all-item">
-					<!-- 回放 -->
-					<view class="l-top">
-						<!-- back img -->
-						<image class="images" src="../../static/room-bg.jpg" mode=""></image>
-						<view class="l-top-history">
-							<view class="l-sum">
-								<view class="l-btn">回放</view>
-								<view class="l-people">1.5W人观看</view>
-							</view>
-						</view>
-						<!-- 官方名称 -->
-						<view class="l-bottom-nickname">
-							<view class="l-name">
-								<view class="l-bottom-image"><image class="images" src="../../static/l-settion.png" mode=""></image></view>
-								<view class="l-bottom-name">
-									海之韵官方
-								</view>								
-							</view>
-						</view>
-					</view>
-					<view class="l-bottom-tittle">
-						<view class="l-name">
-							海之韵新品上新直播秀
-						</view>
-					</view>
-				</view>
-				<view class="l-all-item">
-					<!-- 回放 -->
-					<view class="l-top">
-						<!-- back img -->
-						<image class="images" src="../../static/room-bg.jpg" mode=""></image>
-						<view class="l-top-history">
-							<view class="l-sum">
-								<view class="l-btn">回放</view>
-								<view class="l-people">1.5W人观看</view>
-							</view>
-						</view>
-						<!-- 官方名称 -->
-						<view class="l-bottom-nickname">
-							<view class="l-name">
-								<view class="l-bottom-image"><image class="images" src="../../static/l-settion.png" mode=""></image></view>
-								<view class="l-bottom-name">
-									海之韵官方
-								</view>								
-							</view>
-						</view>
-					</view>
-					<view class="l-bottom-tittle">
-						<view class="l-name">
-							海之韵新品上新直播秀
-						</view>
-					</view>
-				</view>
-				<view class="l-all-item">
-					<!-- 回放 -->
-					<view class="l-top">
-						<!-- back img -->
-						<image class="images" src="../../static/room-bg.jpg" mode=""></image>
-						<view class="l-top-history">
-							<view class="l-sum">
-								<view class="l-btn">回放</view>
-								<view class="l-people">1.5W人观看</view>
-							</view>
-						</view>
-						<!-- 官方名称 -->
-						<view class="l-bottom-nickname">
-							<view class="l-name">
-								<view class="l-bottom-image"><image class="images" src="../../static/l-settion.png" mode=""></image></view>
-								<view class="l-bottom-name">
-									海之韵官方
-								</view>								
-							</view>
-						</view>
-					</view>
-					<view class="l-bottom-tittle">
-						<view class="l-name">
-							海之韵新品上新直播秀
-						</view>
-					</view>
-				</view>
-			
-			
+		<view class="scroll-container">
+			<view class="scroll-content">
+				<swiper
+					class="scroll-swiper"
+					:current="tabIndex"
+					:indicator-dots="false"
+					@change="swiperChange"
+				>
+					<block v-for="(item, index) in tabList" :key="index">
+						<swiper-item>
+							<scroll-view
+								class="scroll-views"
+								scroll-y="true"
+								refresher-enabled="false"
+								@scrolltolower="scrollPage"
+							>
+								<view class="l-main-list">
+									<view class="l-all-list">
+										<view class="l-all-item" v-for="(item,index) of item.list" :key="index">
+											<!-- 回放 -->
+											<view class="l-top">
+												<!-- back img -->
+												<image class="images" src="https://img1.starfox.cn:9001/livefs/zhuiMeng/20200527/14/56/0/room-bg.jpg" mode=""></image>
+												<view class="l-top-history">
+													<view class="l-sum">
+														<view class="l-btn">回放</view>
+														<view class="l-people">1.5W人观看</view>
+													</view>
+												</view>
+												<!-- 官方名称 -->
+												<view class="l-bottom-nickname">
+													<view class="l-name">
+														<view class="l-bottom-image"><image class="images" src="../../static/l-settion.png" mode=""></image></view>
+														<view class="l-bottom-name">
+															海之韵官方
+														</view>								
+													</view>
+												</view>
+											</view>
+											<view class="l-bottom-tittle">
+												<view class="l-name">
+													海之韵新品上新直播秀
+												</view>
+											</view>
+										</view>
+									</view>
+								</view>
+								
+								<u-loadmore class="u-m-t-20 l-add-more" bg-color="#F8F8F8" :load-text="loadText" color="#D7B975" font-size="20" :status="loadStatus" @loadmore="addRandomData"></u-loadmore>
+							</scroll-view>
+						</swiper-item>
+					</block>
+				</swiper>
 			</view>
-			<u-loadmore class="u-m-t-20 l-add-more" bg-color="#F8F8F8" :load-text="loadText" color="#D7B975" font-size="20" :status="loadStatus" @loadmore="addRandomData"></u-loadmore>
-			
 		</view>
+
+
 	</view>
 </template>
 
@@ -167,18 +77,37 @@
 		},
 		data() {
 			return {
+				tabList: [
+					{
+						name: '全部',
+						list: [1, 2, 3],
+						current: 1,
+					},
+					{
+						name: '关注',
+						list: [1, 2, 3, 4, 5],
+						current: 1,
+					},
+					{
+						name: '服装',
+						list: [],
+						current: 1,
+					},
+					{
+						name: '美妆',
+						list: [],
+						current: 1,
+					},
+					{
+						name: '家居',
+						list: [],
+						current: 1,
+					}
+				],
+				tabIndex: 0,
+				
 				placeholder:"搜索想要的内容/主播/商品",
-				list: [{
-						name: '全部'
-					}, {
-						name: '关注'
-					}, {
-						name: '服装'
-					}, {
-						name: '美妆'
-					}, {
-						name: '家居'
-				}],
+				
 				current: 0,
 				// 触底
 				loadText: {
@@ -190,7 +119,10 @@
 			}
 		},
 		onLoad() {
-
+		},
+		created() {
+			this.setHeight()
+			
 		},
 		onReachBottom(){
 			// this.addRandomData()
@@ -200,9 +132,11 @@
 			}, 2000)
 		},
 		methods: {
+			swiperChange (val) {
+				this.tabIndex = val.detail.current
+			},
 			// 加载更多
 			addRandomData() {
-				
 				console.log("addmore")
 				// this.getUppersList()
 				if(this.current == 1){
@@ -216,9 +150,14 @@
 			top_search(e) {
 				console.log(e)
 			},
+			
 			change(index) {
 				console.log(index)
-				this.current = index;
+				this.tabIndex = index;
+			},
+			// 滚动底部  加载
+			scrollPage () {
+				console.log("----")
 			}
 		}
 	}
@@ -269,7 +208,7 @@
 						display: flex;
 						justify-content: flex-start;
 						align-items: center;
-						background:rgba(0,0,0,1);
+						background:rgba(0,0,0,.3);
 						font-size: 20rpx;
 						color: #FFFFFF;
 						border-radius: 29rpx;
@@ -325,4 +264,23 @@
 		}
 	}
 }
+.scroll-container{
+	padding-top: 76rpx;
+	width: 100%;
+	height: 100%;
+	.scroll-content{
+		width: 100%;
+		height: 100%;
+		.scroll-swiper{
+			width: 100%;
+			height: 100%;
+			.scroll-views{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		
+	}
+}
+
 </style>
