@@ -3,6 +3,47 @@
 			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
+		
+		
+		{
+			"path": "pages/home/liveHome/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/user/returnGoods/index",
+			"style": {
+				"navigationBarTitleText": "我要退货"
+			}
+		},
+		
+		
+		
+		
+		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/user/orderdetail/index",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		},
+	
 		{
 			"path": "pages/user/order/index",
 			"style": {
@@ -16,17 +57,12 @@
 				"navigationBarTitleText": "更换主播"
 			}
 		},
-		{
-			"path": "pages/user/index",
-			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationStyle":"custom"
-			}
-		},
+		
 		{
 			"path": "pages/user/homePage/index",
 			"style": {
-				"navigationBarTitleText": "个人主页"
+				"navigationBarTitleText": "个人主页",
+				"navigationStyle":"custom"
 			}
 		},
 		
@@ -50,12 +86,7 @@
 				"disableScroll": true
 			}
 		},
-		{
-			"path": "pages/home/index",
-			"style": {
-				"navigationBarTitleText": "首页"
-			}
-		},
+		
 		
 		
 		

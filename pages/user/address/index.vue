@@ -71,14 +71,14 @@
 						font-size:30rpx;
 						margin-right: 30rpx;
 						font-family:PingFang SC;
-						font-weight:bold;
+						// font-weight:bold;
 						color:rgba(51,51,51,1);
 					}
 					.l-top-phone{
 						font-size:30rpx;
 						margin-right: 30rpx;
 						font-family:PingFang SC;
-						font-weight:bold;
+						// font-weight:bold;
 						color:rgba(51,51,51,1);
 					}
 					.l-top-status{
@@ -89,7 +89,7 @@
 						color: #FFFFFF;
 						font-size:20rpx;
 						font-family:PingFang SC;
-						font-weight:bold;
+						// font-weight:bold;
 						color:rgba(255,255,255,1);
 					}
 				}
@@ -126,7 +126,7 @@
 					justify-content: center;
 					font-size:30rpx;
 					font-family:PingFang SC;
-					font-weight:bold;
+					// font-weight:bold;
 					color:rgba(255,255,255,1);
 					.images{
 						width: 34rpx;
@@ -144,7 +144,7 @@
 					line-height: 98rpx;
 					font-size:30rpx;
 					font-family:PingFang SC;
-					font-weight:bold;
+					// font-weight:bold;
 					color:rgba(255,255,255,1);
 				}
 			}

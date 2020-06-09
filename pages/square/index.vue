@@ -245,7 +245,7 @@
 						.l-bottom-name{
 							font-size:22rpx;
 							font-family:PingFang SC;
-							font-weight:bold;
+							// font-weight:bold;
 							color:rgba(255,255,255,1);
 						}
 					}
@@ -257,7 +257,7 @@
 				.l-name{
 					font-size:26rpx;
 					font-family:PingFang SC;
-					font-weight:bold;
+					// font-weight:bold;
 					color:rgba(51,51,51,1);
 				}
 			}

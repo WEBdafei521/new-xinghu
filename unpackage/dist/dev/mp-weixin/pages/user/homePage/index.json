@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "个人主页",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-cell-group": "/uview-ui/components/u-cell-group/u-cell-group",
+    "u-cell-item": "/uview-ui/components/u-cell-item/u-cell-item",
+    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "u-popup": "/uview-ui/components/u-popup/u-popup",
+    "live-push": "/components/liveHome/LivePush",
+    "live-back": "/components/liveHome/LiveBack"
+  }
+}

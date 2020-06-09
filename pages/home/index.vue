@@ -57,13 +57,13 @@
 				</view>
 				<!-- ★ 直播 / 未开播 -->
 				<view class="l-zhibo-zhong l-my-flex-start">
-					<view class="left l-my-flex-center active">直播中</view>
-					<view class="right l-my-flex-center">未开播</view>
+					<view class="left l-my-flex-center" :class="{'active':selct_active}" @tap="select_live(true)">直播中</view>
+					<view class="right l-my-flex-center" :class="{'active':!selct_active}" @tap="select_live(false)">未开播</view>
 				</view>
 				<!-- ★ 直播中 -->
-				<view class="l-bottom-live">
+				<view class="l-bottom-live" v-if="selct_active">
 					<view class="l-live-list l-my-flex-bw">
-						<view class="l-live-item">
+						<view class="l-live-item" @tap="goLive">
 							<view class="l-top-img">
 								<view class="l-image">
 									<image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image>
@@ -143,6 +143,7 @@
 								</view>
 							</view>
 						</view>
+			
 						<view class="l-live-item">
 							<view class="l-top-img">
 								<view class="l-image">
@@ -167,7 +168,30 @@
 					</view>
 				</view>
 				<!-- ★ 未开播 -->
-				<view class="l-bottom-not-live"></view>
+				<view class="l-bottom-not-live" v-if="!selct_active">
+					<view class="l-notlive-list ">
+						<!-- 预告 -->
+						<view class="l-item l-my-flex-start">
+							<view class="l-left">
+								<image class="l-images" src="../../static/icon/foot-liwu.png" mode=""></image>
+							</view>
+							<view class="l-right">
+								<view class="l-top">红狐集团</view>
+								<view class="l-bottom"><text class="l-text">预告</text>今天晚上18:00开始直播，记得来看哦！</view>
+							</view>
+						</view>
+						<!-- 回放 -->
+						<view class="l-item l-my-flex-start">
+							<view class="l-left">
+								<image class="l-images" src="../../static/icon/foot-liwu.png" mode=""></image>
+							</view>
+							<view class="l-right">
+								<view class="l-top">红狐集团</view>
+								<view class="l-bottom"><text class="l-text-blue">预告</text>今天晚上18:00开始直播，记得来看哦！</view>
+							</view>
+						</view>
+					</view>
+				</view>
 				<u-loadmore class="u-m-t-20 l-add-more" bg-color="#F8F8F8" :load-text="loadText" color="#D7B975" font-size="20" :status="loadStatus" @loadmore="addRandomData"></u-loadmore>
 			</view>
 		
@@ -176,21 +200,22 @@
 		<view v-if="current==1">
 			<!-- 我的导师 -->
 			<view class=" u-m-t-20 u-row-between u-flexc bg-white u-p-30">
-				<u-section title="我的导师" :right="false" :bold="false" sub-title="查看更多"></u-section>
+				<view class="l-title-name">我的导师</view>
 				<view class="u-row-between u-flex l-top-border">
-					<view class="u-flex u-m-t-20">
-						<view class="u-flex ">
+					<view class="u-flex u-m-t-20 l-images">
+						<view class="u-flex">
 							<image style="width: 40px; height: 40px; border-radius:100px;background-color: #eeeeee;" mode="aspectFill" :src="inviterInfo.avatar?inviterInfo.avatar:'../../static/mlogo.png'"
 							 @error="imageError"></image>
 						</view>
 						<view class="u-m-l-20 u-flexc ">
-							<view class="u-flex " style="font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">
+							<view class="u-flex " style="font-family:PingFang SC;color:rgba(51,51,51,1);">
 								{{inviterInfo.nickname || '红狐集团'}}
 							</view>
 							<view class="u-flex u-m-t-10" style="font-size: 12px; font-family:PingFang SC;color:rgba(102,102,102,1);">
 								{{inviterInfo.wechat_id || '微信号:qee222'}}
 							</view>
 						</view>
+						<view class="l-icons">品牌商</view>
 					</view>
 					<view class="u-flex">
 						<view class="l-copy-wx" @click ="copyWeiChat">
@@ -201,21 +226,23 @@
 			</view>
 			<!-- 我的邀请人 -->
 			<view class=" u-m-t-20 u-row-between u-flexc bg-white u-p-30">
-				<u-section title="邀请人" :right="false" :bold="false" sub-title="查看更多"></u-section>
+				<!-- <u-section title="邀请人" :right="false" :bold="false" sub-title="查看更多"></u-section> -->
+				<view class="l-title-name">邀请人</view>
 				<view class="u-row-between u-flex l-top-border">
-					<view class="u-flex u-m-t-20" style="">
+					<view class="u-flex u-m-t-20 l-images">
 						<view class="u-flex ">
 							<image style="width: 40px; height: 40px; border-radius:100px;background-color: #eeeeee;" mode="aspectFill" :src="inviterInfo.avatar?inviterInfo.avatar:'../../static/mlogo.png'"
 							 @error="imageError"></image>
 						</view>
 						<view class="u-m-l-20 u-flexc ">
-							<view class="u-flex " style="font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">
+							<view class="u-flex " style="font-family:PingFang SC;color:rgba(51,51,51,1);">
 								{{inviterInfo.nickname || '明星狐直播'}}
 							</view>
 							<view class="u-flex u-m-t-10" style="font-size: 12px; font-family:PingFang SC;color:rgba(102,102,102,1);">
 								{{inviterInfo.wechat_id || '关注明星狐直播公众号，主播动态随时了解！'}}
 							</view>
 						</view>
+						<view class="l-icons-bottom">服务商</view>
 					</view>
 					<view class="u-flex ">
 						<view class="l-copy-wx" @click ="copyWeiChat">
@@ -226,7 +253,8 @@
 			</view>
 			<!-- 我的  v-if="userInfo.avatar" -->
 			<view class=" u-m-t-20 u-row-between u-flexc bg-white u-p-30">
-				<u-section title="我的" :right="false" :bold="false" sub-title="查看更多"></u-section>
+				<!-- <u-section title="我的" :right="false" :bold="false" sub-title="查看更多"></u-section> -->
+				<view class="l-title-name">我的</view>
 				<view class="u-row-between u-flex l-top-border">
 					<view class="u-flex u-m-t-20" style="">
 						<view class="u-flex">
@@ -234,7 +262,7 @@
 							 @error="imageError"></image>
 						</view>
 						<view class="u-m-l-20 u-flexc ">
-							<view class="u-flex " style="font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">
+							<view class="u-flex " style="font-family:PingFang SC;color:rgba(51,51,51,1);">
 								微信昵称
 							</view>
 							<view class="u-flex u-m-t-10 l-my-info" style="">
@@ -254,7 +282,8 @@
 			</view>
 			<!-- 我的粉丝 -->
 			<view class=" u-m-t-20 u-row-between u-flexc bg-white u-p-30" >
-				<u-section title="我的粉丝" :right="false" :bold="false" sub-title="查看更多"></u-section>
+				<!-- <u-section title="我的粉丝" :right="false" :bold="false" sub-title="查看更多"></u-section> -->
+				<view class="l-title-name">我的粉丝({{fansList.length}}) <text class="l-text">丨仅显示已填写微信号的粉丝</text></view>
 				<view class="u-row-between u-flexQ l-top-border" v-for="(item, index) in fansList" :key="index" >
 				<view class="u-flex u-m-t-20" style="">
 					<view class="u-flex ">
@@ -262,7 +291,7 @@
 						 @error="imageError"></image>
 					</view>
 					<view class="u-m-l-20 u-flexc ">
-						<view class="u-flex " style="font-family:PingFang SC;color:rgba(51,51,51,1);">
+						<view class="u-flex l-my-fans-title" style="">
 							{{item.nickname}} 
 						</view>
 						<view class="u-flex u-m-t-10" style="font-size: 12px; font-family:PingFang SC;color:rgba(102,102,102,1);">
@@ -289,12 +318,13 @@
 		data() {
 			return {
 				placeholder:"搜索想要的内容/主播/商品",
-				fansList:[],
+				fansList:[1,2,3],
 				tab_bar: [{
-					name: '我的关注'
-				}, {
-					name: '我的邀请'
-				}],
+						name: '我的关注'
+					}, {
+						name: '我的邀请'
+					},
+				],
 				current: 0,
 				weichat_num:'',
 				// 广告
@@ -306,7 +336,7 @@
 				indicatorPos: 'bottomCenter',
 				effect3d: false,
 				title: true,
-				// 图片
+				// banner图片
 				banner_list: [
 					{
 						image: 'https://img.zcool.cn/community/01c9a55bce79c7a801213dea9b74bb.jpg@1280w_1l_2o_100sh.jpg',
@@ -321,7 +351,7 @@
 						title: '蒹葭萋萋，白露未晞。所谓伊人，在水之湄'
 					}
 				],
-				// 用户信息
+				// 用户导师信息
 				inviterInfo:{},
 				// 用户信息
 				userInfo:{},
@@ -333,6 +363,8 @@
 				},
 				loadStatus:"loading",
 				loadFansStatus: 'loadmore',
+				
+				selct_active:false
 				
 			}
 		},
@@ -346,7 +378,22 @@
 				this.loadStatus = 'loadmore';
 			}, 2000)
 		},
+		onReady() {
+	
+		},
 		methods: {
+			
+			// 去直播页面
+			goLive(){
+				uni.navigateTo({
+					url:"./liveHome/index"
+				})
+			},
+			// 我的关注 和我的邀请
+			select_live(e){
+				console.log(e)
+				this.selct_active = e
+			},
 			top_search(e){
 				console.log(e)
 			},
@@ -397,6 +444,55 @@
 		border-radius: 16rpx;
 		overflow: hidden;
 	}
+	.l-images{
+		position: relative;
+		.l-icons{
+			position: absolute;
+			bottom: -30%;
+			z-index: 99;
+			padding: 4rpx 8rpx;
+			background:rgba(240,157,62,1);
+			border:2px solid rgba(248, 214, 139, 1);
+			border-radius:6rpx;
+			font-size:18rpx;
+			font-family:PingFang SC;
+			color:rgba(255,255,255,1);
+		}
+		.l-icons-bottom{
+			position: absolute;
+			bottom: -30%;
+			z-index: 99;
+			padding: 4rpx 8rpx;
+			
+			background:rgba(215,185,117,1);
+			border:2px solid rgba(255, 232, 179, 1);
+			border-radius:6rpx;
+			font-size:18rpx;
+			font-family:PingFang SC;
+			color:rgba(255,255,255,1);
+		}
+	}
+	.l-my-fans-title{
+		font-size:28rpx;
+		font-family:PingFang SC;
+		color:rgba(51,51,51,1);
+	}
+	.l-title-name{
+		
+		padding: 20rpx 0;
+		background: #FFFFFF;
+		border-bottom: rgba(237,237,237,1);
+		font-size:30rpx;
+		font-family:PingFang SC;
+		font-weight:bold;
+		color:rgba(51,51,51,1);
+		.l-text{
+			font-size:24rpx;
+			font-family:PingFang SC;
+			font-weight:400;
+			color:rgba(177,177,182,1);
+		}
+	}
 	.l-title-top {
 		position: fixed;
 		top: 0rpx;
@@ -406,6 +502,56 @@
 	}
 	.l-zanwei {
 		height: 186rpx;
+	}
+	.l-notlive-list{
+		
+			margin-top: 20rpx;
+		.l-item{
+			border-radius:16rpx;
+			padding: 30rpx;
+			margin-bottom: 20rpx;
+			background: #FFFFFF;
+			.l-left{
+				.l-images{
+					width:80rpx;
+					height:80rpx;
+					border-radius:50%;
+					margin-right: 20rpx;
+				}
+			}
+			.l-right{
+				.l-top{
+					font-size:26rpx;
+					font-family:PingFang SC;
+					font-weight:bold;
+					color:rgba(51,51,51,1);
+				}
+				.l-bottom{
+					.l-text{
+						background:rgba(169,171,190,1);
+						border-radius:15rpx;
+						color: #FFFFFF;
+						display: inline-block;
+						padding: 2rpx 14rpx;
+						margin-right: 10rpx;
+						margin-top: 14rpx;
+					}
+					.l-text-blue{
+						background: rgba(122,169,248,1);
+						border-radius:15rpx;
+						color: #FFFFFF;
+						display: inline-block;
+						padding: 2rpx 14rpx;
+						margin-right: 10rpx;
+						margin-top: 14rpx;
+					}
+					font-size:24rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					color:rgba(177,177,182,1);
+				}
+			}
+		}
 	}
 	.item {
 		margin: 30rpx 0;
@@ -432,7 +578,7 @@
 					.top{
 						font-size:26rpx;
 						font-family:PingFang SC;
-						font-weight:bold;
+						// font-weight:bold;
 						color:rgba(51,51,51,1);
 					}
 					.bottom{
@@ -588,7 +734,7 @@
 					.top{
 						font-size:26rpx;
 						font-family:PingFang SC;
-						font-weight:bold;
+						// font-weight:bold;
 						color:rgba(51,51,51,1);
 					}
 					.bottom{

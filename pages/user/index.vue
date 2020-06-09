@@ -37,7 +37,7 @@
 			<view class="l-user-item">
 				<view class="l-order-top l-my-flex-bw">
 					<view class="l-my">我的订单</view>
-					<view class="l-look-all">查看全部订单></view>
+					<view class="l-look-all" @tap="all_order_list">查看全部订单></view>
 				</view>
 				<view class="l-order-bottom">
 					<view class="l-bottom-item">
@@ -112,7 +112,7 @@
 					<image class="images" src="../../static/l-spread.png" mode=""></image>
 					<text class="l-tool-name">我的推广</text>
 				</view> -->
-				<view class="l-tool-item">
+				<view class="l-tool-item" @tap="goVisited">
 					<image class="images" src="../../static/l-invitation.png" mode=""></image>
 					<text class="l-tool-name">更绑邀请</text>
 				</view>
@@ -174,6 +174,16 @@
 			
 		},
 		methods: {
+			goVisited(){
+				uni.navigateTo({
+				    url: 'replaceVisita/index'
+				});
+			},
+			all_order_list(){
+				uni.navigateTo({
+				    url: 'order/index'
+				});
+			},
 			goAdress(){
 				console.log("-----")
 				uni.navigateTo({
