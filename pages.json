@@ -4,6 +4,19 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页oney，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/user/auth/index",
+			"style": {
+				"navigationBarTitleText": "实名认证"
+			}
+		},
+		{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "首页",
@@ -32,13 +45,6 @@
 		},
 		
 		
-		{
-			"path": "pages/user/index",
-			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationStyle":"custom"
-			}
-		},
 		{
 			"path": "pages/user/orderdetail/index",
 			"style": {

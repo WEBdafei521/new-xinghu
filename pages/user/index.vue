@@ -104,7 +104,7 @@
 					<image class="images" src="../../static/l-location.png" mode=""></image>
 					<text class="l-tool-name">收货地址</text>
 				</view>
-				<view class="l-tool-item">
+				<view class="l-tool-item" @tap="goAuth">
 					<image class="images" src="../../static/l-identification.png" mode=""></image>
 					<text class="l-tool-name">实名认证</text>
 				</view>
@@ -174,6 +174,11 @@
 			
 		},
 		methods: {
+			goAuth(){
+				uni.navigateTo({
+				    url: 'auth/index'
+				});
+			},
 			goVisited(){
 				uni.navigateTo({
 				    url: 'replaceVisita/index'
