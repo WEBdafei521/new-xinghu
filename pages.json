@@ -2,10 +2,7 @@
 	"easycom": {
 			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		
-		
-		
+	"pages": [ //pages数组中第一项表示应用启动页oney，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/home/liveHome/index",
 			"style": {
@@ -15,9 +12,9 @@
 			}
 		},
 		{
-			"path": "pages/home/index",
+			"path": "pages/user/returnMoney/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "申请退款"
 			}
 		},
 		{
@@ -26,6 +23,13 @@
 				"navigationBarTitleText": "我要退货"
 			}
 		},
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		
 		
 		
 		

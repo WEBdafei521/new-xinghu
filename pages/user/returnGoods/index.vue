@@ -19,7 +19,7 @@
 			<view class="l-return-reason" @tap="returnReason">
 				<view class="l-left">退款原因</view>
 				<view class="l-right">
-					<text>请选择</text>
+					<text>{{check!=null?check.name:'请选择'}}</text>
 					<u-icon name="arrow-right" color="#B1B1B6" size="28"></u-icon>
 				</view>
 			</view>
@@ -41,7 +41,7 @@
 			<view class="l-upload-img">
 				<view class="l-upload-title">上传凭证</view>
 				<view class="l-images">
-					<view class="l-upload-btn" v-for="(item,index) of imageList">
+					<view class="l-upload-btn" v-for="(item,index) of imageList" :key="index">
 						<image class="image1" :src="item" mode=""></image>
 					</view>
 					<view class="l-upload-btn" v-if="imageList.length<3" @tap="chonseImg">
@@ -63,14 +63,24 @@
 				<u-popup v-model="show" mode="bottom" length="auto">
 					<view class="l-popup-money">
 						<view class="l-title">退款原因</view>
-						<view class="l-list">
-							<view class="l-item l-my-flex-bw">
-								<view>不喜欢/不想要</view>
-								<view>·1</view>
+						<u-checkbox-group max="1">
+							<view class="l-list">
+								<view class="l-item l-my-flex-bw"	v-for="(item, index) in list" :key="index" >
+									<view>{{item.name}}</view>
+									
+												<u-checkbox
+													 shape="circle"
+													 active-color="#D7B975"
+													@change="checkboxChange" 
+													v-model="item.checked" 
+													:name="item.name"
+												></u-checkbox>
+									
+								</view>
 							</view>
-						</view>
-						<view class="l-bottom-btn">
-							
+						</u-checkbox-group>
+						<view class="l-bottom-btn" @tap="closePopu">
+							关闭
 						</view>
 					</view>
 				</u-popup>
@@ -83,57 +93,108 @@
 		data () {
 			return {
 				imageList:[],
-				show: false
+				show: false,
+				list: [
+					{
+						name: '不喜欢/不想要',
+						checked: false,
+						id: false
+					},
+					{
+						name: '空包裹',
+						checked: false,
+						id: false
+					},
+					{
+						name: '未按约定时间发货',
+						checked: false,
+						id: false
+					},
+					{
+						name: '快递/物流一直未送达',
+						checked: false,
+						id: false
+					},
+					{
+						name: '快递/物流无跟踪记录',
+						checked: false,
+						id: false
+					},
+					{
+						name: '货物破损已拒签',
+						checked: false,
+						id: false
+					}
+				],
+				check:null
 			}
 		},
 		onLoad() {
 		  
 		},
 		created () {},
-			
 		methods: {
+			closePopu(){
+				this.show = false
+				this.list.forEach((item)=>{
+					if(item.checked){
+						this.check = item
+					}
+					 
+				})
+				console.log(this.check)
+			},
 			returnReason(){
 				this.show=true
 			},
-			// 图片上传
-			chonseImg(){
-					uni.showToast({
-						title:"上传中...",
-						icon:"none"
-					})
-					var that = this ;
-					uni.chooseImage({
-							sourceType:['camera', 'album'],
-							// #ifdef MP-WEIXIN
-							sizeType:['compressed', 'original'],
-							// #endif
-							count: 1,
-							success: (res) => {
-								uni.hideToast()
-								uni.uploadFile({
-								    url: 'https://img1.starfox.cn:9001/livefs/upload', //仅为示例，非真实的接口地址
-								    filePath: res.tempFilePaths[0],
-								    name: 'file',
-								    formData: {
-								        'user': 'test'
-								    },
-								    success: function (uploadFileRes) {
-											console.log(uploadFileRes)
-											var obj = uploadFileRes
-											if(obj.statusCode == 200) {
-												var arr = [];
-												that.imageList = that.imageList.concat(obj.data);
-											}
-											uni.showToast({
-												title:"正在上传",
-												icon:"none"
-											})
-								    }
-								});
-							}
-						})
+			// 选中某个复选框时，由checkbox时触发
+			checkboxChange(e) {
+				console.log(e);
 			},
-		}
+			// 选中任一checkbox时，由checkbox-group触发
+			checkboxGroupChange(e) {
+				// console.log(e);
+			},
+			chonseImg(){
+				uni.showToast({
+					title:"上传中...",
+					icon:"none"
+				})
+				var that = this ;
+				uni.chooseImage({
+						sourceType:['camera', 'album'],
+						// #ifdef MP-WEIXIN
+						sizeType:['compressed', 'original'],
+						// #endif
+						count: 1,
+						success: (res) => {
+							uni.hideToast()
+							uni.uploadFile({
+							    url: 'https://img1.starfox.cn:9001/livefs/upload', //仅为示例，非真实的接口地址
+							    filePath: res.tempFilePaths[0],
+							    name: 'file',
+							    formData: {
+							        'user': 'test'
+							    },
+							    success: function (uploadFileRes) {
+										console.log(uploadFileRes)
+										var obj = uploadFileRes
+										if(obj.statusCode == 200) {
+											var arr = [];
+											that.imageList = that.imageList.concat(obj.data);
+										}
+										uni.showToast({
+											title:"正在上传",
+											icon:"none"
+										})
+							    }
+							});
+						}
+				})
+			}
+		},
+
+				
 	}
 </script>
 
@@ -154,7 +215,7 @@
 				.l-product-info{
 					font-size:24rpx;
 					font-family:PingFang SC;
-					font-weight:bold;
+					// font-weight:bold;
 					color:rgba(153,153,153,1);
 					margin-left: 20rpx;
 					.l-product-intro{
@@ -165,14 +226,14 @@
 						.l-intro{
 							font-size:26rpx;
 							font-family:PingFang SC;
-							font-weight:bold;
+							// font-weight:bold;
 							color:rgba(51,51,51,1);
 						}
 						.l-price{
 							.l-top{
 								font-size:26rpx;
 								font-family:PingFang SC;
-								font-weight:bold;
+								// font-weight:bold;
 								color:rgba(51,51,51,1);
 							}
 							.l-bottom{
@@ -180,7 +241,7 @@
 								text-align: right;
 								font-size:24rpx;
 								font-family:PingFang SC;
-								font-weight:bold;
+								// font-weight:bold;
 								color:rgba(153,153,153,1);
 								display: flex;
 								justify-content: flex-end;
@@ -191,7 +252,7 @@
 					.l-rule{
 						font-size:24rpx;
 						font-family:PingFang SC;
-						font-weight:bold;
+						// font-weight:bold;
 						color:rgba(153,153,153,1);
 						.l-rule-item{
 							margin-right: 10rpx;
@@ -333,7 +394,8 @@
 	}
 }
 .l-popup-money{
-	padding: 30rpx 0;
+	padding: 30rpx 0 150rpx 0;
+	width: 100%;
 	background: #FFFFFF;
 	.l-title{
 		margin: 0 auto;
@@ -345,6 +407,7 @@
 		margin-bottom: 40rpx;
 	}
 	.l-list{
+		width: 98vw;
 		padding:  29rpx;
 		.l-item{
 			padding: 30rpx 0;
@@ -352,7 +415,11 @@
 		}
 	}
 	.l-bottom-btn{
-		
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #FFFFFF;
 	}
 }
 </style>

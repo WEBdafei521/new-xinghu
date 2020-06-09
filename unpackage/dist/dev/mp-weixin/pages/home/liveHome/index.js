@@ -94,16 +94,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uIcon: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 142))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 150))
   },
   uPopup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 149))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 157))
   }
 }
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.is_input = true
+    }
+
+    _vm.e1 = function($event) {
+      _vm.is_input = false
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -137,7 +146,20 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var More = function More() {__webpack_require__.e(/*! require.ensure | components/room/More */ "components/room/More").then((function () {return resolve(__webpack_require__(/*! ../../../components/room/More.vue */ 156));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var More = function More() {__webpack_require__.e(/*! require.ensure | components/room/More */ "components/room/More").then((function () {return resolve(__webpack_require__(/*! ../../../components/room/More.vue */ 164));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var CarList = function CarList() {__webpack_require__.e(/*! require.ensure | components/room/CarList */ "components/room/CarList").then((function () {return resolve(__webpack_require__(/*! ../../../components/room/CarList.vue */ 171));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -277,14 +299,20 @@ __webpack_require__.r(__webpack_exports__);
 {
 
   components: {
-    'foot-more': More },
+    'foot-more': More,
+    'car-list': CarList },
 
   data: function data() {
     return {
       headAttr: {
         top: 44 },
 
+      // 底部弹框 显示/隐藏
       moreVisible: false,
+      carVisible: false,
+      // 单个商品的信息
+      goodsInfo: {},
+      // 评论输入框的显示/隐藏
       is_active: false,
       is_input: false,
 
@@ -312,41 +340,50 @@ __webpack_require__.r(__webpack_exports__);
     // this.loginAction()
   },
   methods: {
+    more_product: function more_product() {
+      console.log("----");
+      this.carVisible = true;
+    },
+    // 购买
+    addGoods: function addGoods(val) {
+      this.goodsInfo = val;
+      this.buyVisible = true;
+    },
+    // 更多
     more_tool: function more_tool() {
       this.moreVisible = true;
     },
+    // 页面底部输入框 按钮 控制输入信息框显示隐藏
     say_anything: function say_anything() {
-      console.log("say_anything");
       this.is_input = true;
     },
     // 发送评论
     sendMsg: function sendMsg() {
       console.log("say_anything");
       if (!this.userInputWord) {
-
         uni.showToast({
           title: "发送文字不能为空",
           icon: "none",
           duration: 1000 });
 
-        return;
+      } else {
+        this.is_input = false;
+        var num = Math.floor(Date.parse(new Date()) / 1000000);
+        // 发送消息
+        var data = {
+          name: '测试中' + num,
+          content: this.userInputWord };
+
+        this.argumentList.push(data);
+        // 清空input值
+        this.userInputWord = "";
+
+        // 让滚动条到底部
+        this.scrollToBottom();
+
+
       }
 
-      var num = Math.floor(Date.parse(new Date()) / 1000000);
-      // 发送消息
-      var data = {
-        name: '测试中' + num,
-        content: this.userInputWord };
-
-      this.argumentList.push(data);
-      console.log(this.argumentList);
-      // 清空input值
-      this.userInputWord = "";
-      this.is_input = false;
-
-      // 让滚动条到底部
-      this.scrollToBottom();
-      // this.is_input = false
     },
     // 让滚动条到底部的方法
     scrollToBottom: function scrollToBottom() {

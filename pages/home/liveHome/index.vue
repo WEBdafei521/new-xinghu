@@ -9,7 +9,7 @@
 		
 		<!-- title -->
 		<view class="l-title l-my-flex-start">
-			<!-- d点赞提示 -->
+			<!-- 点赞提示 -->
 			<view>
 				<image class="l-images" v-if="!is_active" src="../../../static/l_attention.png" mode=""></image>
 			</view>
@@ -79,14 +79,13 @@
 		</view>
 		<!-- s输入评论 -->
 		<view class="l-bottom-info ">
-			
 			<template v-if="!is_input">
 				<view class="l-bottom l-my-flex-bw">
 					<view class="l-left">
-						<view class="l-inp" @tap="say_anything">说点什么...</view>
+						<input disabled class="l-inp" placeholder="说点什么..." @click="is_input = true"></input>
 					</view>
 					<view class="l-right">
-						<view class="l-icons l-my-flex-start">
+						<view class="l-icons l-my-flex-start"  @tap="more_product">
 							<image class="l-images" src="../../../static/icon/foot-car.png" mode=""></image>
 							<text class="l-text"> 橱窗 </text>
 						</view>
@@ -114,6 +113,7 @@
 						placeholder="说点什么"
 						placeholder-class="input-key-holder"
 						confirm-type="send"
+						@blur="is_input = false"
 						v-model="userInputWord"
 					>
 					<button class="foot-input-key-button" type="default" @click="sendMsg">发送</button>
@@ -122,6 +122,7 @@
 			
 			
 		</view>
+		
 		<!-- 更多 -->
 		<u-popup
 			class="room-popup"
@@ -130,22 +131,40 @@
 		>
 			<foot-more />
 		</u-popup>
+		
+		<!-- 橱窗商品 -->
+		<u-popup
+			class="room-popup"
+			v-model="carVisible"
+			mode="bottom"
+		>
+			<template v-if="carVisible">
+				<car-list :visible="carVisible" @buyGoods="addGoods"/>
+			</template>
+		</u-popup>
 	</view>
 </template>
 
 <script>
 	import More from '../../../components/room/More.vue'
+	import CarList from '../../../components/room/CarList.vue'
 	export default {
 	
 		components: {
 			'foot-more': More,
+			'car-list': CarList,
 		},
 		data() {
 			return {
 				headAttr: {
 					top: 44,
 				},
+				// 底部弹框 显示/隐藏
 				moreVisible:false,
+				carVisible: false,
+				// 单个商品的信息
+				goodsInfo:{},
+				// 评论输入框的显示/隐藏
 				is_active:false,
 				is_input:false,
 				
@@ -173,26 +192,34 @@
 			// this.loginAction()
 		},
 		methods: {
+			more_product(){
+				console.log("----")
+				this.carVisible = true
+			},
+			// 购买
+			addGoods (val) {
+				this.goodsInfo = val
+				this.buyVisible = true
+			},
+			// 更多
 			more_tool(){
 				this.moreVisible  = true
 			},
+			// 页面底部输入框 按钮 控制输入信息框显示隐藏
 			say_anything(){
-				console.log("say_anything")
 				this.is_input = true
 			},
 			// 发送评论
 			sendMsg(){
 				console.log("say_anything")
 				if (!this.userInputWord) {
-				
 					uni.showToast({
 					    title:"发送文字不能为空",
 							icon: "none",
 					    duration: 1000
 					})
-					return
-				} 
-				
+				}else{
+						this.is_input = false
 					let num = Math.floor(Date.parse(new Date()) / 1000000)
 					// 发送消息
 					let data = {
@@ -200,14 +227,15 @@
 						content: this.userInputWord
 					}
 					this.argumentList.push(data)
-					console.log(this.argumentList)
 					// 清空input值
 					this.userInputWord = ""
-					this.is_input = false 
 					
 					// 让滚动条到底部
 					this.scrollToBottom()
-					// this.is_input = false
+					
+				
+				}
+					
 			},
 			// 让滚动条到底部的方法
 			scrollToBottom () {

@@ -94,10 +94,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uIcon: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 142))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 150))
   },
   uPopup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 149))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 157))
+  },
+  uCheckboxGroup: function() {
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-checkbox-group/u-checkbox-group */ "uview-ui/components/u-checkbox-group/u-checkbox-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-checkbox-group/u-checkbox-group.vue */ 178))
+  },
+  uCheckbox: function() {
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-checkbox/u-checkbox */ "uview-ui/components/u-checkbox/u-checkbox").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-checkbox/u-checkbox.vue */ 185))
   }
 }
 var render = function() {
@@ -217,24 +223,83 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       imageList: [],
-      show: false };
+      show: false,
+      list: [
+      {
+        name: '不喜欢/不想要',
+        checked: false,
+        id: false },
+
+      {
+        name: '空包裹',
+        checked: false,
+        id: false },
+
+      {
+        name: '未按约定时间发货',
+        checked: false,
+        id: false },
+
+      {
+        name: '快递/物流一直未送达',
+        checked: false,
+        id: false },
+
+      {
+        name: '快递/物流无跟踪记录',
+        checked: false,
+        id: false },
+
+      {
+        name: '货物破损已拒签',
+        checked: false,
+        id: false }],
+
+
+      check: null };
 
   },
   onLoad: function onLoad() {
 
   },
   created: function created() {},
-
   methods: {
+    closePopu: function closePopu() {var _this = this;
+      this.show = false;
+      this.list.forEach(function (item) {
+        if (item.checked) {
+          _this.check = item;
+        }
+
+      });
+      console.log(this.check);
+    },
     returnReason: function returnReason() {
       this.show = true;
     },
-    // 图片上传
+    // 选中某个复选框时，由checkbox时触发
+    checkboxChange: function checkboxChange(e) {
+      console.log(e);
+    },
+    // 选中任一checkbox时，由checkbox-group触发
+    checkboxGroupChange: function checkboxGroupChange(e) {
+      // console.log(e);
+    },
     chonseImg: function chonseImg() {
       uni.showToast({
         title: "上传中...",

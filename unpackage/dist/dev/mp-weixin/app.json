@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/home/liveHome/index",
-    "pages/home/index",
+    "pages/user/returnMoney/index",
     "pages/user/returnGoods/index",
+    "pages/home/index",
     "pages/user/index",
     "pages/user/orderdetail/index",
     "pages/user/order/index",
