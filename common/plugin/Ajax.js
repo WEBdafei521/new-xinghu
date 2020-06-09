@@ -2,9 +2,8 @@ import Vue from 'vue'
 import { getToken } from '../utils/utils.js'
 import store from '../store/store.js'
 
-let fetchUrl = 'http://mp.starfox.cn:9004'
+let fetchUrl = 'https://mp.starfox.cn:9008'
 let adminUrl = 'https://mp.starfox.cn:9009'
-
 function fetch (data, method) {
 	return new Promise((resolve, reject) => {
 		uni.request({
@@ -36,8 +35,9 @@ export default {
 	get (url, parmas, admin) {
 		url = admin ? adminUrl + url : fetchUrl + url
 		if (!getToken()) {
-			// 登录
-			// store.dispatch('loginAction')
+			// store.loginAction()
+			// 登录:
+			store.dispatch('loginAction')
 		}
 		let data = {
 			url,
@@ -52,10 +52,11 @@ export default {
 		return fetch(data)
 	},
 	post (url, parmas, admin) {
+		// console.log(url)
 		url = admin ? adminUrl + url : fetchUrl + url
 		if (!getToken()) {
 			// 登录
-			// store.dispatch('loginAction')
+			store.dispatch('loginAction')
 		}
 		let data = {
 			url,

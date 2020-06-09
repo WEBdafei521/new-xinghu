@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { loginApi } from '../api/api.js'
+import { bannerList } from '../api/api.js'
 import { setToken } from '../utils/utils.js'
 Vue.use(Vuex)
 
@@ -30,11 +31,18 @@ export default new Vuex.Store({
 					}).then(res => {
 						if (!res.msg) {
 							commit('setUser', res)
+							uni.setStorageSync("userInfo", JSON.stringify(res))
 							setToken(res.access_token)
 						}
 					})
 				}
 			});
+		},
+		bannerLists ({ commit }, data) {
+			// 获取用户信息
+			bannerList().then(res => {
+				console.log(res)
+			})
 		}
 	},
 	mudules: {},

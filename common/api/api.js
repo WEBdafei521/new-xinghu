@@ -6,8 +6,29 @@ import axios from '../plugin/Ajax.js'
 export const loginApi = (parmas) => {
 	return axios.post('/api/master/pub/login', parmas)
 }
+// 轮播图
+export const bannerList = (parmas) => {
+	return axios.get('/api/master/home/topBanner', parmas)
+}
+// 广告列表
+export const noticeList = (parmas) => {
+	return axios.get('/api/master/home/topNoticeList', parmas)
+}
+// 首页直播列表
+export const live_list = (parmas) => {
+	return axios.post('/api/master/user/getUppers', parmas)
+}
+// 首页直播列表
+export const my_invitited = (parmas) => {
+	return axios.post('/api/master/user/getFans', parmas)
+}
+// 首页直播列表
+export const updata_wxnum = (parmas) => {
+	return axios.post('/api/master/user/setWeChatNum', parmas)
+}
+// 首页我的邀请的信息
 /*
- * 
+ * /user/getFans/user/getFans
 */
 /*
  * 钱包

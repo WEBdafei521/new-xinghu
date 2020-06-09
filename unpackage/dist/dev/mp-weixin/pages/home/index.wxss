@@ -278,7 +278,21 @@
   color: white;
   margin-right: 10rpx;
 }
+.l-bottom-live .l-live-item .l-top-img .l-status .l-aaa .lefts.data-v-17d263b2 {
+  background: #66DC79;
+  font-size: 18rpx;
+  padding: 6rpx;
+  border-radius: 13px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: white;
+  margin-right: 10rpx;
+}
 .l-bottom-live .l-live-item .l-top-img .l-status .l-aaa .right.data-v-17d263b2 {
+  width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 20rpx;
   font-family: PingFang SC;
   font-weight: 400;
@@ -287,6 +301,14 @@
 .l-bottom-live .l-live-item .l-bottom-info.data-v-17d263b2 {
   width: 100%;
   padding: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-flex-wrap: nowrap;
+          flex-wrap: nowrap;
 }
 .l-bottom-live .l-live-item .l-bottom-info .l-left.data-v-17d263b2 {
   width: 60rpx;
@@ -305,6 +327,10 @@
   color: #333333;
 }
 .l-bottom-live .l-live-item .l-bottom-info .l-right .bottom.data-v-17d263b2 {
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 20rpx;
   font-family: PingFang SC;
   font-weight: 400;

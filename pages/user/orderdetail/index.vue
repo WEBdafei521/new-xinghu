@@ -132,7 +132,7 @@
 		methods: {
 			user_retrun_googs(){
 				uni.navigateTo({
-					
+					url:"../returnGoods/index"
 				})
 			},
 		}

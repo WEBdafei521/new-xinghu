@@ -4,6 +4,13 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页oney，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/home/liveHome/index",
 			"style": {
 				"navigationBarTitleText": "",
@@ -23,15 +30,6 @@
 				"navigationBarTitleText": "我要退货"
 			}
 		},
-		{
-			"path": "pages/home/index",
-			"style": {
-				"navigationBarTitleText": "首页"
-			}
-		},
-		
-		
-		
 		
 		
 		{

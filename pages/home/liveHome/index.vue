@@ -10,7 +10,7 @@
 		<!-- title -->
 		<view class="l-title l-my-flex-start">
 			<!-- 点赞提示 -->
-			<view>
+			<view @tap="goBack">
 				<image class="l-images" v-if="!is_active" src="../../../static/l_attention.png" mode=""></image>
 			</view>
 			<u-icon name="arrow-left" color="#ffffff" size="28"></u-icon>
@@ -192,6 +192,9 @@
 			// this.loginAction()
 		},
 		methods: {
+			goBack(){
+				uni.navigateBack()
+			},
 			more_product(){
 				console.log("----")
 				this.carVisible = true

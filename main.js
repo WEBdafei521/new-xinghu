@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-
+import store from './common/store/store.js'
 Vue.config.productionTip = false
 
 // 引入mixin 用户获取屏幕高度
@@ -12,6 +12,7 @@ Vue.use(uView);
 App.mpType = 'app'
 
 const app = new Vue({
+	store,
     ...App
 })
 app.$mount()

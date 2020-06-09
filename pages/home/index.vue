@@ -2,7 +2,7 @@
 	<view class="s" style="background-color: #F6F6F6;height: 100vh;">
 		<view class="l-title-top">
 			<!-- 输入框 -->
-			<lp-input :placeholder="placeholder" @search_inp="top_search"></lp-input>
+			<lp-input :placeholder="placeholder" @search_inp="goSearch"></lp-input>
 			<view class="swiper">
 				<u-tabs :list="tab_bar" active-color="#D7B975" :is-scroll="false" :current="current" @change="change"></u-tabs>
 			</view>
@@ -10,12 +10,14 @@
 		<view class="l-zanwei"></view>
 		
 		<u-toast ref="uToast"></u-toast>
-		<view v-if="current==0">
+		<view v-if="current==0" :class="current==0?'animated fadeInLeft delay-.2s':''">
 			<view class="content">
 				<!-- 轮播图 -->
 				<view class="swiper u-m-t-0 l-swiper">
-					<u-swiper :height="250" name="image" :list="banner_list" :title="title" :effect3d="effect3d" :indicator-pos="indicatorPos"
-					 :mode="mode" :interval="3000"></u-swiper>
+			
+					 <u-swiper :height="250" name="media_src" :list="banner_list" :title="title" :effect3d="effect3d" :indicator-pos="indicatorPos"
+					  :mode="mode" :interval="3000"></u-swiper>
+					
 				</view>
 				<!-- 广告 -->
 				<view class="swiper u-m-t-18 l-guanggao-radius">
@@ -63,107 +65,28 @@
 				<!-- ★ 直播中 -->
 				<view class="l-bottom-live" v-if="selct_active">
 					<view class="l-live-list l-my-flex-bw">
-						<view class="l-live-item" @tap="goLive">
+						<view class="l-live-item" @tap="goLive" v-for="(item,index) of live_live" :key="index">
 							<view class="l-top-img">
 								<view class="l-image">
-									<image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image>
+									<image class="images" :src="item.image" mode=""></image>
 								</view>
 								<view class="l-status">
 									<view class="l-aaa l-my-flex-start">
-										<view class="left">直播中</view>
+										<view class="lefts" v-if="item.live_status == 0">即将开播</view>
+										<view class="left" v-if="item.live_status != 0">直播中</view>
 										<view class="right">今天晚上12:00户外直播</view>
 									</view>
 								</view>
 							</view>
 							<view class="l-bottom-info l-my-flex-start">
-								<view class="l-left"><image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image></view>
-								<view class="l-right ">
-									<view class="top">蓝狐集团</view>
-									<view class="bottom">美妆</view>
+								<view class="l-left"><image class="images" :src="item.url" mode=""></image></view>
+								<view class="l-right">
+									<view class="top">{{item.title}}</view>
+									<view class="bottom">{{item.shop}}</view>
 								</view>
 							</view>
 						</view>
-						<view class="l-live-item">
-							<view class="l-top-img">
-								<view class="l-image">
-									<image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image>
-								</view>
-								<view class="l-status">
-									<view class="l-aaa l-my-flex-start">
-										<view class="left">直播中</view>
-										<view class="right">今天晚上12:00户外直播</view>
-									</view>
-								</view>
-							</view>
-							<view class="l-bottom-info l-my-flex-start">
-								<view class="l-left"><image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image></view>
-								<view class="l-right ">
-									<view class="top">蓝狐集团</view>
-									<view class="bottom">美妆</view>
-								</view>
-							</view>
-						</view>
-						<view class="l-live-item">
-							<view class="l-top-img">
-								<view class="l-image">
-									<image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image>
-								</view>
-								<view class="l-status">
-									<view class="l-aaa l-my-flex-start">
-										<view class="left">直播中</view>
-										<view class="right">今天晚上12:00户外直播</view>
-									</view>
-								</view>
-							</view>
-							<view class="l-bottom-info l-my-flex-start">
-								<view class="l-left"><image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image></view>
-								<view class="l-right ">
-									<view class="top">蓝狐集团</view>
-									<view class="bottom">美妆</view>
-								</view>
-							</view>
-						</view>
-						<view class="l-live-item">
-							<view class="l-top-img">
-								<view class="l-image">
-									<image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image>
-								</view>
-								<view class="l-status">
-									<view class="l-aaa l-my-flex-start">
-										<view class="left">直播中</view>
-										<view class="right">今天晚上12:00户外直播</view>
-									</view>
-								</view>
-							</view>
-							<view class="l-bottom-info l-my-flex-start">
-								<view class="l-left"><image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image></view>
-								<view class="l-right ">
-									<view class="top">蓝狐集团</view>
-									<view class="bottom">美妆</view>
-								</view>
-							</view>
-						</view>
-			
-						<view class="l-live-item">
-							<view class="l-top-img">
-								<view class="l-image">
-									<image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image>
-								</view>
-								<view class="l-status">
-									<view class="l-aaa l-my-flex-start">
-										<view class="left l-my-flex-center">直播中</view>
-										<view class="right">今天晚上12:00户外直播</view>
-									</view>
-								</view>
-							</view>
-							<view class="l-bottom-info l-my-flex-start">
-								<view class="l-left"><image class="images" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3763731660,624305534&fm=15&gp=0.jpg" mode=""></image></view>
-								<view class="l-right ">
-									<view class="top">蓝狐集团</view>
-									<view class="bottom">美妆</view>
-								</view>
-							</view>
-						</view>
+					
 						
 					</view>
 				</view>
@@ -197,7 +120,7 @@
 		
 			<!-- <u-loadmore bg-color="#f6f6f6" color="#D7B975" :status="loadStatus" @loadmore="addRandomData"></u-loadmore> -->
 		</view>
-		<view v-if="current==1">
+		<view v-if="current==1" :class="current==1?'animated fadeInRight delay-.2s':''">
 			<!-- 我的导师 -->
 			<view class=" u-m-t-20 u-row-between u-flexc bg-white u-p-30">
 				<view class="l-title-name">我的导师</view>
@@ -212,13 +135,13 @@
 								{{inviterInfo.nickname || '红狐集团'}}
 							</view>
 							<view class="u-flex u-m-t-10" style="font-size: 12px; font-family:PingFang SC;color:rgba(102,102,102,1);">
-								{{inviterInfo.wechat_id || '微信号:qee222'}}
+								{{inviterInfo.weichat_num || '微信号:暂无'}}
 							</view>
 						</view>
 						<view class="l-icons">品牌商</view>
 					</view>
 					<view class="u-flex">
-						<view class="l-copy-wx" @click ="copyWeiChat">
+						<view class="l-copy-wx" @click ="copyWeiChat(inviterInfo.weichat_num)">
 							复制微信号
 						</view>
 					</view>
@@ -263,7 +186,7 @@
 						</view>
 						<view class="u-m-l-20 u-flexc ">
 							<view class="u-flex " style="font-family:PingFang SC;color:rgba(51,51,51,1);">
-								微信昵称
+								{{userInfo.nick_name?userInfo.nick_name:'微信昵称'}}
 							</view>
 							<view class="u-flex u-m-t-10 l-my-info" style="">
 								<!-- {{tui.userInfo().weichat_num}} -->
@@ -304,13 +227,15 @@
 				
 			
 			</view>
+			<u-loadmore class="u-m-t-20 l-add-more" bg-color="#F8F8F8" :load-text="loadText" color="#D7B975" font-size="20" :status="loadStatus" @loadmore="addRandomData"></u-loadmore>
 		</view>
 	</view>
 </template>
 
 <script>
 	import lpInput from "@/components/common/LpInput.vue"
-	
+	import {bannerList ,noticeList ,live_list ,my_invitited ,updata_wxnum} from "../../common/api/api.js"
+	import { mapActions } from 'vuex'
 	export default {
 		components: {
 			lpInput,
@@ -328,33 +253,22 @@
 				current: 0,
 				weichat_num:'',
 				// 广告
-				listad: [
-					
-				],
+				listad: [],
+		
 				// 轮播
 				mode: 'round',
 				indicatorPos: 'bottomCenter',
 				effect3d: false,
 				title: true,
 				// banner图片
-				banner_list: [
-					{
-						image: 'https://img.zcool.cn/community/01c9a55bce79c7a801213dea9b74bb.jpg@1280w_1l_2o_100sh.jpg',
-						title: '蒹葭苍苍，白露为霜。所谓伊人，在水一方'
-					},
-					{
-						image: 'http://nwzimg.wezhan.cn/contents/sitefiles2022/10110914/images/3739633.jpg',
-						title: '溯洄从之，道阻且长。溯游从之，宛在水中央'
-					},
-					{
-						image: 'https://img.zcool.cn/community/0168cc5b0bbc28a8012181b0b8ff3e.jpg',
-						title: '蒹葭萋萋，白露未晞。所谓伊人，在水之湄'
-					}
-				],
+				banner_list: [],
+				// 直播列表
+				live_live:[],
 				// 用户导师信息
 				inviterInfo:{},
 				// 用户信息
 				userInfo:{},
+				// 我的关注触底
 				// 触底
 				loadText: {
 					loadmore: '轻轻上拉',
@@ -362,27 +276,127 @@
 					nomore: '粉丝数据加载完毕~'
 				},
 				loadStatus:"loading",
-				loadFansStatus: 'loadmore',
 				
-				selct_active:false
-				
+				selct_active:true,
+				// 直播中 页面数
+				pages:1,
+				// 我的分时 页数
+				pages_Fans:1
 			}
 		},
 		onLoad() {
-
+			// 获取用户信息
+			this.getIndexInfo()
+			this.live_list(this.pages)
+			this.fans_list(this.pages_Fans)
 		},
+		created() {
+			this.loginAction()
+			this.userInfo =JSON.parse(uni.getStorageSync("userInfo")) 
+			this.weichat_num = this.userInfo.weichat_num;
+		},
+		onShow() {},
 		onReachBottom(){
-			// this.addRandomData()
-			this.loadStatus = 'loading';
-			setTimeout(() => {
-				this.loadStatus = 'loadmore';
-			}, 2000)
+			this.addRandomData()
+			
 		},
-		onReady() {
-	
+		onReady() {},
+		onPullDownRefresh() {
+			console.log("---")
+			if(this.current == 0){
+				this.pages = 1
+				this.live_list(this.pages,"refresh")
+			}else{
+				this.pages_Fans = 1
+				this.fans_list(this.pages_Fans,"refresh")
+			}
+		  //监听下拉刷新动作的执行方法，每次手动下拉刷新都会执行一次
+		  uni.stopPullDownRefresh();  //停止下拉刷新动画
 		},
 		methods: {
-			
+			...mapActions(['loginAction',"bannerLists"]),
+			getIndexInfo(){
+				// 轮播
+				bannerList({pages_index:0}).then(res => {
+						this.listgg = res.list
+						this.banner_list = res.list
+				})
+				noticeList({pages_index:0}).then(res =>{
+						for(var item of res.list){
+							this.listad.push(item.title)
+						}
+				})
+			},
+			// 获取粉丝列表
+			fans_list(pages,refresh){
+				this.loadStatus="loading"
+				my_invitited({current_page:pages,page_size:5}).then(res=>{
+					this.inviterInfo = res.inviter;
+					if(res.fans_list==null){
+						this.loadStatus="nomore"
+					}else{
+						if(refresh){
+							this.fansList[0] = res.fans_list
+						}else{
+							this.fansList.push(res.fans_list)
+							this.loadStatus="loadmore"
+						}
+						
+					}
+					
+				})
+			},
+			// 获取主播列表
+			live_list(pages,refresh){
+				this.loadStatus="loading"
+				live_list({current_page:pages,page_size:5}).then(res => {
+					console.log(res)
+					var that =this
+					if(res.data_list.length==0){
+						this.loadStatus="nomore"
+					}else{
+						for(let item of res.data_list){
+							if(item.live_info.shop_id > 0){
+								var live_cover = JSON.parse(item.live_info.live_cover);
+								var image = '';
+								if (live_cover.length > 0) {
+									image = live_cover[0].cover
+									var obj = {
+										id: item.live_info.shop_id,
+										price: 35,
+										shop: item.nickname,
+										title: item.live_info.live_title,
+										image: image,
+										live_status: item.live_info.live_status,
+										shop_id: item.live_info.shop_id,
+										url:item.avatar
+									}
+									if(refresh){
+										console.log('----')
+										that.live_live[0] = obj
+									}else{
+										that.live_live.push(obj)
+									}
+								}
+							}
+						}
+						this.loadStatus="loadmore"
+					}
+				})
+			},
+			// 复制微信号
+			copyWeiChat(wx_num){
+				console.log(wx_num)
+				if(!wx_num){
+					wx.showToast({
+						title:"暂无微信账号",
+						icon:"none"
+					})
+					return
+				}else{
+					this.$copy.set(wx_num)
+				}
+			},
 			// 去直播页面
 			goLive(){
 				uni.navigateTo({
@@ -394,20 +408,21 @@
 				console.log(e)
 				this.selct_active = e
 			},
-			top_search(e){
-				console.log(e)
+			// 顶部搜索
+			goSearch(e){
+				this.$refs.uToast.show({
+					title: '没有找到任何数据',
+					type: 'success'
+				})
 			},
 			// 加载更多
 			addRandomData() {
-				
-				console.log("addmore")
-				// this.getUppersList()
-				if(this.current == 1){
-					this.loadStatus = 'loading';
-					// this.getMoreFansList();
+				if(this.current == 0){
+					this.pages = ++this.pages
+					this.live_list(this.pages)
 				}else{
-					this.loadStatus = 'loading';
-					// this.getUppersList();
+					this.pages_Fans = ++this.pages_Fans
+					this.fans_list(this.pages_Fans)
 				}
 			},
 			// 首页切换 我的关注 我的邀请
@@ -423,11 +438,14 @@
 			updateWxNum(){
 				if(this.userInfo && this.weichat_num){
 					var t = this
-					
-					this.$refs.uToast.show({
-						title: '更新成功',
-						type: 'success'
+					updata_wxnum({wechat_num:this.weichat_num}).then(res => {
+						console.log(res)
+						this.$refs.uToast.show({
+							title: '更新成功',
+							type: 'success'
+						})
 					})
+					
 				}else{
 					this.$refs.uToast.show({
 						title: '请填写真实的微信号',
@@ -707,7 +725,21 @@
 							color:rgba(255,255,255,1);
 							margin-right: 10rpx;
 						}
+						.lefts{
+							background:#66DC79;
+							font-size:18rpx;
+							padding: 6rpx;
+							border-radius:13px;
+							font-family:PingFang SC;
+							font-weight:400;
+							color:rgba(255,255,255,1);
+							margin-right: 10rpx;
+						}
 						.right{
+							width: 60%;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
 							font-size:20rpx;
 							font-family:PingFang SC;
 							font-weight:400;
@@ -719,6 +751,9 @@
 			.l-bottom-info{
 				width: 100%;
 				padding: 30rpx;
+				display: flex;
+				justify-content: flex-start;
+				flex-wrap: nowrap;
 				.l-left{
 					width: 60rpx;
 					height: 60rpx;
@@ -738,6 +773,10 @@
 						color:rgba(51,51,51,1);
 					}
 					.bottom{
+						width: 90%;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
 						font-size:20rpx;
 						font-family:PingFang SC;
 						font-weight:400;
