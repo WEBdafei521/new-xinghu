@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/user/index",
+    "pages/user/auth/index",
     "pages/home/index",
     "pages/home/liveHome/index",
     "pages/user/returnMoney/index",
     "pages/user/returnGoods/index",
-    "pages/user/index",
     "pages/user/orderdetail/index",
     "pages/user/order/index",
     "pages/user/replaceVisita/index",
@@ -61,5 +62,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap3.json"
+  "sitemapLocation": "sitemap19.json"
 }

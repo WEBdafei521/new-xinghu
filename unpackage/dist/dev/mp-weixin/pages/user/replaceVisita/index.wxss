@@ -25,26 +25,26 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.content.data-v-8f51e5ce {
+.content.data-v-7dc564fc {
   padding: 20rpx 0;
 }
-.content .l-my-visited.data-v-8f51e5ce {
+.content .l-my-visited.data-v-7dc564fc {
   background: #FFFFFF;
   padding: 20rpx 30rpx;
 }
-.content .l-my-visited .l-my-text.data-v-8f51e5ce {
+.content .l-my-visited .l-my-text.data-v-7dc564fc {
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: bold;
   color: #333333;
 }
-.content .l-my-visited .l-my-visited.data-v-8f51e5ce {
+.content .l-my-visited .l-my-visited.data-v-7dc564fc {
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: sample;
   color: #999999;
 }
-.content .l-my-visited .l-my-copy.data-v-8f51e5ce {
+.content .l-my-visited .l-my-copy.data-v-7dc564fc {
   width: 77rpx;
   height: 31rpx;
   text-align: center;
@@ -55,12 +55,12 @@
   font-weight: sample;
   color: white;
 }
-.content .l-my-teacher.data-v-8f51e5ce {
+.content .l-my-teacher.data-v-7dc564fc {
   margin-top: 20rpx;
   padding: 20rpx 30rpx;
   background: #ffffff;
 }
-.content .l-my-teacher .l-my-text.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-text.data-v-7dc564fc {
   font-size: 30rpx;
   padding-bottom: 20rpx;
   font-family: PingFang SC;
@@ -68,53 +68,53 @@
   color: #333333;
   border-bottom: 1px solid #ededed;
 }
-.content .l-my-teacher .l-my-text .texts.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-text .texts.data-v-7dc564fc {
   font-size: 24rpx;
   font-family: PingFang SC;
   font-weight: sample;
   color: #999999;
   margin-left: 16rpx;
 }
-.content .l-my-teacher .l-my-teacher-info.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info.data-v-7dc564fc {
   padding: 31rpx 31rpx 20rpx 0;
 }
-.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe.data-v-7dc564fc {
   margin-left: 20rpx;
 }
-.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-top.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-top.data-v-7dc564fc {
   margin-bottom: 30rpx;
 }
-.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-top .l-text.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-top .l-text.data-v-7dc564fc {
   font-size: 26rpx;
   font-family: PingFang SC;
   font-weight: sample;
   color: #333333;
 }
-.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-top .l-image.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-top .l-image.data-v-7dc564fc {
   width: 39rpx;
   height: 30rpx;
   margin-right: 10rpx;
 }
-.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-top .l-image1.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-top .l-image1.data-v-7dc564fc {
   width: 28rpx;
   height: 32rpx;
 }
-.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-bottom.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info .l-left .l-right-righe .l-bottom.data-v-7dc564fc {
   font-size: 22rpx;
   font-family: PingFang SC;
   font-weight: sample;
   color: #999999;
 }
-.content .l-my-teacher .l-my-teacher-info .l-left .l-image.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info .l-left .l-image.data-v-7dc564fc {
   width: 99rpx;
   height: 99rpx;
   border-radius: 99rpx;
 }
-.content .l-my-teacher .l-my-teacher-info .l-left .l-image .images.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info .l-left .l-image .images.data-v-7dc564fc {
   width: 100%;
   height: 100%;
 }
-.content .l-my-teacher .l-my-teacher-info .l-right .l-copy-wx.data-v-8f51e5ce {
+.content .l-my-teacher .l-my-teacher-info .l-right .l-copy-wx.data-v-7dc564fc {
   box-sizing: border-box;
   height: 50rpx;
   width: 184rpx;
@@ -127,34 +127,34 @@
   font-weight: 400;
   color: #d7b875;
 }
-.content .l-visited-num.data-v-8f51e5ce {
+.content .l-visited-num.data-v-7dc564fc {
   margin-top: 20rpx;
   padding: 20rpx 30rpx;
   background-color: #ffffff;
 }
-.content .l-visited-num .l-top .l-top-title.data-v-8f51e5ce {
+.content .l-visited-num .l-top .l-top-title.data-v-7dc564fc {
   font-size: 28rpx;
   font-family: PingFang SC;
   font-weight: sample;
   color: #333333;
 }
-.content .l-visited-num .l-top .l-top-title .l-text.data-v-8f51e5ce {
+.content .l-visited-num .l-top .l-top-title .l-text.data-v-7dc564fc {
   font-size: 24rpx;
   font-family: PingFang SC;
   font-weight: sample;
   color: #999999;
 }
-.content .l-visited-num .l-top .l-top-inp.data-v-8f51e5ce {
+.content .l-visited-num .l-top .l-top-inp.data-v-7dc564fc {
   margin: 26rpx 0 60rpx 0;
   border: 1px solid #b1b1b6;
   border-radius: 8rpx;
 }
-.content .l-visited-num .l-top .l-top-inp .l-inp.data-v-8f51e5ce {
+.content .l-visited-num .l-top .l-top-inp .l-inp.data-v-7dc564fc {
   height: 60rpx;
   width: 100%;
   padding-left: 16rpx;
 }
-.content .l-visited-num .l-btn.data-v-8f51e5ce {
+.content .l-visited-num .l-btn.data-v-7dc564fc {
   width: 100%;
   height: 98rpx;
   text-align: center;

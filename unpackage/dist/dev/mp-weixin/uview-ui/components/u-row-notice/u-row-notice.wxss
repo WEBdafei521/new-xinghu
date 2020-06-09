@@ -25,11 +25,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.u-notice-bar.data-v-1da5e729 {
+.u-notice-bar.data-v-a728b0c0 {
   padding: 18rpx 24rpx;
   overflow: hidden;
 }
-.u-direction-row.data-v-1da5e729 {
+.u-direction-row.data-v-a728b0c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -40,7 +40,7 @@
   -webkit-justify-content: space-between;
           justify-content: space-between;
 }
-.u-left-icon.data-v-1da5e729 {
+.u-left-icon.data-v-a728b0c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: inline-flex;
@@ -48,7 +48,7 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.u-notice-box.data-v-1da5e729 {
+.u-notice-box.data-v-a728b0c0 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
@@ -58,7 +58,7 @@
   overflow: hidden;
   margin-left: 12rpx;
 }
-.u-right-icon.data-v-1da5e729 {
+.u-right-icon.data-v-a728b0c0 {
   margin-left: 12rpx;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -67,9 +67,9 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.u-notice-content.data-v-1da5e729 {
-  -webkit-animation: u-loop-animation-data-v-1da5e729 10s linear infinite both;
-          animation: u-loop-animation-data-v-1da5e729 10s linear infinite both;
+.u-notice-content.data-v-a728b0c0 {
+  -webkit-animation: u-loop-animation-data-v-a728b0c0 10s linear infinite both;
+          animation: u-loop-animation-data-v-a728b0c0 10s linear infinite both;
   text-align: right;
   padding-left: 100%;
   display: -webkit-box;
@@ -78,12 +78,12 @@
   -webkit-flex-wrap: nowrap;
           flex-wrap: nowrap;
 }
-.u-notice-text.data-v-1da5e729 {
+.u-notice-text.data-v-a728b0c0 {
   font-size: 26rpx;
   word-break: keep-all;
   white-space: nowrap;
 }
-@-webkit-keyframes u-loop-animation-data-v-1da5e729 {
+@-webkit-keyframes u-loop-animation-data-v-a728b0c0 {
 0% {
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
@@ -93,7 +93,7 @@
             transform: translate3d(-100%, 0, 0);
 }
 }
-@keyframes u-loop-animation-data-v-1da5e729 {
+@keyframes u-loop-animation-data-v-a728b0c0 {
 0% {
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);

@@ -25,7 +25,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.l-product.data-v-335fdfbf {
+.l-product.data-v-065d2668 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -37,18 +37,18 @@
   background: #FFFFFF;
   margin-top: 10rpx;
 }
-.l-product .l-product-image .images.data-v-335fdfbf {
+.l-product .l-product-image .images.data-v-065d2668 {
   width: 227rpx;
   height: 227rpx;
   border-radius: 16rpx;
 }
-.l-product .l-product-info.data-v-335fdfbf {
+.l-product .l-product-info.data-v-065d2668 {
   font-size: 24rpx;
   font-family: PingFang SC;
   color: #999999;
   margin-left: 20rpx;
 }
-.l-product .l-product-info .l-product-intro.data-v-335fdfbf {
+.l-product .l-product-info .l-product-intro.data-v-065d2668 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -59,17 +59,17 @@
   -webkit-flex-flow: nowrap;
           flex-flow: nowrap;
 }
-.l-product .l-product-info .l-product-intro .l-intro.data-v-335fdfbf {
+.l-product .l-product-info .l-product-intro .l-intro.data-v-065d2668 {
   font-size: 26rpx;
   font-family: PingFang SC;
   color: #333333;
 }
-.l-product .l-product-info .l-product-intro .l-price .l-top.data-v-335fdfbf {
+.l-product .l-product-info .l-product-intro .l-price .l-top.data-v-065d2668 {
   font-size: 26rpx;
   font-family: PingFang SC;
   color: #333333;
 }
-.l-product .l-product-info .l-product-intro .l-price .l-bottom.data-v-335fdfbf {
+.l-product .l-product-info .l-product-intro .l-price .l-bottom.data-v-065d2668 {
   width: 100%;
   text-align: right;
   font-size: 24rpx;
@@ -85,15 +85,15 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.l-product .l-product-info .l-rule.data-v-335fdfbf {
+.l-product .l-product-info .l-rule.data-v-065d2668 {
   font-size: 24rpx;
   font-family: PingFang SC;
   color: #999999;
 }
-.l-product .l-product-info .l-rule .l-rule-item.data-v-335fdfbf {
+.l-product .l-product-info .l-rule .l-rule-item.data-v-065d2668 {
   margin-right: 10rpx;
 }
-.l-return-reason.data-v-335fdfbf {
+.l-return-reason.data-v-065d2668 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -107,13 +107,13 @@
   background: #FFFFFF;
   margin-top: 10rpx;
 }
-.l-return-reason .l-left.data-v-335fdfbf {
+.l-return-reason .l-left.data-v-065d2668 {
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: 400;
   color: #333333;
 }
-.l-return-reason .l-right.data-v-335fdfbf {
+.l-return-reason .l-right.data-v-065d2668 {
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: 400;
@@ -128,54 +128,54 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.l-return-info.data-v-335fdfbf {
+.l-return-info.data-v-065d2668 {
   padding: 30rpx;
   margin-top: 10rpx;
   background: #FFFFFF;
 }
-.l-return-info .l-top.data-v-335fdfbf {
+.l-return-info .l-top.data-v-065d2668 {
   margin-bottom: 30rpx;
 }
-.l-return-info .l-top .l-top-left.data-v-335fdfbf {
+.l-return-info .l-top .l-top-left.data-v-065d2668 {
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: 400;
   color: #333333;
 }
-.l-return-info .l-top .l-top-right.data-v-335fdfbf {
+.l-return-info .l-top .l-top-right.data-v-065d2668 {
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: 400;
   color: #e93340;
 }
-.l-return-info .l-middle.data-v-335fdfbf {
+.l-return-info .l-middle.data-v-065d2668 {
   font-size: 24rpx;
   margin-bottom: 30rpx;
   font-family: PingFang SC;
   font-weight: 400;
   color: #b1b1b6;
 }
-.l-return-info .l-bottom .l-bottom-left.data-v-335fdfbf {
+.l-return-info .l-bottom .l-bottom-left.data-v-065d2668 {
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: 400;
   color: #333333;
 }
-.l-return-info .l-bottom .l-bottom-right.data-v-335fdfbf {
+.l-return-info .l-bottom .l-bottom-right.data-v-065d2668 {
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: 400;
   color: #b1b1b6;
 }
-.l-upload-img.data-v-335fdfbf {
+.l-upload-img.data-v-065d2668 {
   padding: 30rpx;
   background: #FFFFFF;
   margin-top: 10rpx;
 }
-.l-upload-img .l-upload-title.data-v-335fdfbf {
+.l-upload-img .l-upload-title.data-v-065d2668 {
   margin-bottom: 30rpx;
 }
-.l-upload-img .l-images.data-v-335fdfbf {
+.l-upload-img .l-images.data-v-065d2668 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -190,7 +190,7 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.l-upload-img .l-images .aaa .l-upload-text.data-v-335fdfbf {
+.l-upload-img .l-images .aaa .l-upload-text.data-v-065d2668 {
   border: none;
   width: 150rpx;
   height: 120rpx;
@@ -200,7 +200,7 @@
   font-weight: 400;
   color: #b1b1b6;
 }
-.l-upload-img .l-images .l-upload-btn.data-v-335fdfbf {
+.l-upload-img .l-images .l-upload-btn.data-v-065d2668 {
   margin-right: 16rpx;
   width: 120rpx;
   height: 120rpx;
@@ -223,22 +223,22 @@
   font-weight: 400;
   color: rgba(177, 177, 182, 0.8);
 }
-.l-upload-img .l-images .l-upload-btn .images.data-v-335fdfbf {
+.l-upload-img .l-images .l-upload-btn .images.data-v-065d2668 {
   width: 47rpx;
   height: 38rpx;
 }
-.l-upload-img .l-images .l-upload-btn .image1.data-v-335fdfbf {
+.l-upload-img .l-images .l-upload-btn .image1.data-v-065d2668 {
   width: 120rpx;
   height: 120rpx;
 }
-.l-bottom-btn.data-v-335fdfbf {
+.l-bottom-btn.data-v-065d2668 {
   position: fixed;
   bottom: 69rpx;
   width: 100%;
   height: 98rpx;
   background: #d7b975;
 }
-.l-bottom-btn .l-btn.data-v-335fdfbf {
+.l-bottom-btn .l-btn.data-v-065d2668 {
   width: 100%;
   height: 98rpx;
   text-align: center;
@@ -249,12 +249,12 @@
   color: white;
   background: #d7b975;
 }
-.l-popup-money.data-v-335fdfbf {
+.l-popup-money.data-v-065d2668 {
   padding: 30rpx 0 150rpx 0;
   width: 100%;
   background: #FFFFFF;
 }
-.l-popup-money .l-title.data-v-335fdfbf {
+.l-popup-money .l-title.data-v-065d2668 {
   margin: 0 auto;
   font-size: 30rpx;
   text-align: center;
@@ -263,15 +263,15 @@
   color: #333333;
   margin-bottom: 40rpx;
 }
-.l-popup-money .l-list.data-v-335fdfbf {
+.l-popup-money .l-list.data-v-065d2668 {
   width: 98vw;
   padding: 29rpx;
 }
-.l-popup-money .l-list .l-item.data-v-335fdfbf {
+.l-popup-money .l-list .l-item.data-v-065d2668 {
   padding: 30rpx 0;
   border-bottom: 1px solid #eeeeee;
 }
-.l-popup-money .l-bottom-btn.data-v-335fdfbf {
+.l-popup-money .l-bottom-btn.data-v-065d2668 {
   text-align: center;
   display: -webkit-box;
   display: -webkit-flex;

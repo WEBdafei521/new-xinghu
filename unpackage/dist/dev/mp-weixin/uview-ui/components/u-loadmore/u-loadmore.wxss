@@ -25,7 +25,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.u-load-more-wrap.data-v-45677dae {
+.u-load-more-wrap.data-v-4dfad520 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -34,7 +34,7 @@
   -webkit-justify-content: center;
           justify-content: center;
 }
-.u-load-more-inner.data-v-45677dae {
+.u-load-more-inner.data-v-4dfad520 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -45,7 +45,7 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.u-more.data-v-45677dae {
+.u-more.data-v-4dfad520 {
   width: 60%;
   position: relative;
   display: -webkit-box;
@@ -55,7 +55,7 @@
   -webkit-justify-content: center;
           justify-content: center;
 }
-.u-more.data-v-45677dae::before {
+.u-more.data-v-4dfad520::before {
   content: ' ';
   position: absolute;
   border-bottom: 1px solid #d4d4d4;
@@ -65,10 +65,10 @@
   top: 50%;
   left: 0;
 }
-.u-dot-text.data-v-45677dae {
+.u-dot-text.data-v-4dfad520 {
   font-size: 28rpx;
 }
-.u-loadmore-icon.data-v-45677dae {
+.u-loadmore-icon.data-v-4dfad520 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;

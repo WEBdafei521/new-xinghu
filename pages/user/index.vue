@@ -37,26 +37,26 @@
 			<view class="l-user-item">
 				<view class="l-order-top l-my-flex-bw">
 					<view class="l-my">我的订单</view>
-					<view class="l-look-all" @tap="all_order_list">查看全部订单></view>
+					<view class="l-look-all" @tap="all_order_list(0)">查看全部订单></view>
 				</view>
 				<view class="l-order-bottom">
-					<view class="l-bottom-item">
+					<view class="l-bottom-item" @tap="go_order_list(0)">
 						<image class="images1" src="../../static/unpay.png" mode=""></image>
 						<view class="l-bottom-text">待付款</view>
 					</view>
-					<view class="l-bottom-item">
+					<view class="l-bottom-item" @tap="go_order_list(1)">
 						<image class="images2" src="../../static/unsend.png" mode=""></image>
 						<view class="l-bottom-text">待发货</view>
 					</view>
-					<view class="l-bottom-item">
+					<view class="l-bottom-item" @tap="go_order_list(2)">
 						<image class="images3" src="../../static/notget.png" mode=""></image>
 						<view class="l-bottom-text">待收货</view>
 					</view>
-					<view class="l-bottom-item">
+					<view class="l-bottom-item" @tap="go_order_list(3)">
 						<image class="images4" src="../../static/argue.png" mode=""></image>
 						<view class="l-bottom-text">评论</view>
 					</view>
-					<view class="l-bottom-item">
+					<view class="l-bottom-item" @tap="go_order_list(4)">
 						<image class="images5" src="../../static/success_pay.png" mode=""></image>
 						<view class="l-bottom-text">退款/售后</view>
 					</view>
@@ -174,27 +174,38 @@
 			
 		},
 		methods: {
+			// 全部订单
+			all_order_list(type){
+				uni.navigateTo({
+				    url: 'order/index?type='+type
+				});
+			},
+			// 我的订单
+			go_order_list(type){
+				uni.navigateTo({
+				    url: 'order/index?type='+type
+				});
+			},
+			// 实名认证
 			goAuth(){
 				uni.navigateTo({
 				    url: 'auth/index'
 				});
 			},
+			// 更绑邀请
 			goVisited(){
 				uni.navigateTo({
 				    url: 'replaceVisita/index'
 				});
 			},
-			all_order_list(){
-				uni.navigateTo({
-				    url: 'order/index'
-				});
-			},
+			// 地址管理
 			goAdress(){
 				console.log("-----")
 				uni.navigateTo({
 				    url: 'address/index'
 				});
 			},
+			// 个人主页
 			goHomePage(){
 				console.log("-----")
 				uni.navigateTo({

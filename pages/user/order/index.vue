@@ -18,6 +18,7 @@
 				:current="tabIndex"
 				:indicator-dots="false"
 				@change="swiperChange"
+				
 			>
 				<block v-for="(item, index) in goodsTab" :key="index">
 					<swiper-item>
@@ -47,45 +48,65 @@
 		
 		data() {
 			return {
+			
 				triggered:true,
-				tabIndex: 0,
+				tabIndex: null,
 				goodsTab: [
 					{ 
 						name: '全部',
 						list: [1,2,3,4],
-						churrent: 1,
+						current: 1,
+						tabName:"all"
 					},
 					{ 
 						name: '待付款',
 						list: [1,2,3],
 						current: 1,
+						tabName:"unPay"
 					},
 					{ 
 						name: '待发货',
 						list: [1,2],
 						current: 1,
+						tabName:"unSend"
 					},
 					{
 						name: '待收货',
 						list: [1],
 						current: 1,
+						tabName:"unRecove"
 					},
 					{
 						name: '待评价',
 						list: [],
 						current: 1,
+						tabName:"unArgument"
 					}
 				],
+				curPages: [1,1,1,1],
 			}
 		},
-		onLoad() {
+		// 进入订单列表后，
+			// 首先发起五次u请求，
+			// 然后分别将五个状态的顶大列表请求过来，、
+			// 最后根据点击的tabindex在进行数据处理
+		onLoad(options) {
+			// 获取上一页面的数据
+			this.tabIndex = options.type
+			this.getList(options.type)
+		
 			this.setHeight()
-			this.getList()
 		},
+		// 下拉
 		onPullDownRefresh() {
 						this.onPullDownHandle()
-		    },
+		},
+		// 触底
+		onReachBottom(){
+			
+		},
 		methods: {
+		
 			onPullDownHandle(){
 				if(this.tabIndex==0){
 					
@@ -124,18 +145,32 @@
 				    uni.stopPullDownRefresh();
 				}, 1000);
 			},
+			addOrderToView(list){
+				this.goodsTab[this.tabIndex].list.push(list) 
+			},
 			
-
 			// scroll-view滑动时触发
-			scroll(e) { },
-			getList(){
+			scroll(e) {
+				// console.log(e)
+				var tabIndex = this.tabIndex
+				this.goodsTab[tabIndex].current++;
+				this.getList(tabIndex)
+				console.log("触底了")
+			},
+			getList(index){
+				var page = 0;
+				if(index){
+					page = this.goodsTab[index].current 
+				}
+				var orderType = this.getOrderType(index)
+				var that = this
 				var orderParmas={
-					pageSize: 10,
-					stateType: "state_new",
-					shop_id: '',
+					"page": page,
+					"rows": 10,
+					"stateType":orderType
 				}
 				orderListApi(orderParmas).then(res=>{
-					// console.log(res)
+					that.addOrderToView(res.list)
 				})
 			},
 			// tab切换
@@ -146,6 +181,14 @@
 			swiperChange (val) {
 				this.tabIndex = val.detail.current
 			},
+			// 根据传过来的 索引 筛选出 ordertype 类型
+			getOrderType(index){
+				return this.goodsTab[index].tabName
+			}
+		},
+		watch:{
+			tabIndex (old,new1){
+			}　
 		}
 	}
 </script>

@@ -34,7 +34,7 @@
 /* 右 1像素边框 */
 /* 溢出隐藏... */
 /* 重置按钮样式 */
-.more-container.data-v-0ce9c155 {
+.more-container.data-v-1bae7e04 {
   position: relative;
   width: 100%;
   height: 393rpx;
@@ -42,7 +42,7 @@
   background: #17181c;
   color: #B1B1B6;
 }
-.more-container .more-title.data-v-0ce9c155 {
+.more-container .more-title.data-v-1bae7e04 {
   width: 100%;
   padding: 40rpx 0;
   display: -webkit-box;
@@ -56,7 +56,7 @@
           align-items: center;
   font-size: 30rpx;
 }
-.more-container .more-list.data-v-0ce9c155 {
+.more-container .more-list.data-v-1bae7e04 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -68,7 +68,7 @@
           align-items: center;
   padding-top: 30rpx;
 }
-.more-container .more-list-btn.data-v-0ce9c155 {
+.more-container .more-list-btn.data-v-1bae7e04 {
   width: 110rpx;
   display: -webkit-box;
   display: -webkit-flex;
@@ -85,7 +85,7 @@
           flex-direction: column;
   font-size: 22rpx;
 }
-.more-container .more-list-btn .btn-img.data-v-0ce9c155 {
+.more-container .more-list-btn .btn-img.data-v-1bae7e04 {
   width: 43rpx;
   height: 43rpx;
   margin-bottom: 28rpx;

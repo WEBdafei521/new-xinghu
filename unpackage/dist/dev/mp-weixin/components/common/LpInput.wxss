@@ -25,12 +25,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.l-index-inp.data-v-69fb1366 {
+.l-index-inp.data-v-5fa6755d {
   padding: 19rpx 30rpx;
   height: 107rpx;
   background-color: #FFFFFF;
 }
-.l-index-inp .left.data-v-69fb1366 {
+.l-index-inp .left.data-v-5fa6755d {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -42,20 +42,20 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.l-index-inp .left .top image.data-v-69fb1366 {
+.l-index-inp .left .top image.data-v-5fa6755d {
   width: 39rpx;
   height: 34rpx;
 }
-.l-index-inp .left .bottom.data-v-69fb1366 {
+.l-index-inp .left .bottom.data-v-5fa6755d {
   font-size: 16rpx;
   font-family: PingFang SC;
   font-weight: bold;
   color: #999999;
 }
-.l-index-inp .right.data-v-69fb1366 {
+.l-index-inp .right.data-v-5fa6755d {
   color: #D7B975;
 }
-.l-index-inp .center.data-v-69fb1366 {
+.l-index-inp .center.data-v-5fa6755d {
   background: #f8f8f8;
   border-radius: 33rpx;
   padding: 0 21rpx;
@@ -75,11 +75,11 @@
   -webkit-justify-content: flex-start;
           justify-content: flex-start;
 }
-.l-index-inp .center .image.data-v-69fb1366 {
+.l-index-inp .center .image.data-v-5fa6755d {
   width: 30rpx;
   height: 30rpx;
 }
-.l-index-inp .center input.data-v-69fb1366 {
+.l-index-inp .center input.data-v-5fa6755d {
   width: 90%;
   font-size: 26rpx;
   padding-left: 16rpx;
