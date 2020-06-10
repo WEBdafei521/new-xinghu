@@ -7,22 +7,22 @@
 			<!-- userInfo -->
 			<view class="l-user-info l-my-flex-start">
 				<view class="l-left l-my-flex-start">
-					<view class="l-left-user-img"><image class="images" src="../../static/mlogo.png" mode=""></image></view>
+					<view class="l-left-user-img"><image class="images" :src="userInfo.avatar" mode=""></image></view>
 					<view class="l-right-user-info">
 						<view class="l-user-name l-my-flex-bw">
-							<text>明星狐集团</text> 
+							<text>{{userInfo.nick_name}}</text> 
 							<view class="l-type-login">
 								微信号登陆
 							</view>
 						</view>
 						<view class="l-user-detail">
-							<text>ID: 00002</text>
+							<text>ID: {{90000+userInfo.user_id}}</text>
 						</view>
 						<view class="l-user-detail">
 							<text>188****8866</text>
 						</view>
 						<view class="l-user-detail">
-							<text>注册时间：2020-03-17  11:22</text>
+							<text>注册时间：{{this.$u.timeFormat(userInfo.create_time, 'yyyy/mm/dd hh:MM')}}</text>
 						</view>
 					</view>
 				</view>
@@ -40,23 +40,23 @@
 					<view class="l-look-all" @tap="all_order_list(0)">查看全部订单></view>
 				</view>
 				<view class="l-order-bottom">
-					<view class="l-bottom-item" @tap="go_order_list(0)">
+					<view class="l-bottom-item" @tap="go_order_list(1)">
 						<image class="images1" src="../../static/unpay.png" mode=""></image>
 						<view class="l-bottom-text">待付款</view>
 					</view>
-					<view class="l-bottom-item" @tap="go_order_list(1)">
+					<view class="l-bottom-item" @tap="go_order_list(2)">
 						<image class="images2" src="../../static/unsend.png" mode=""></image>
 						<view class="l-bottom-text">待发货</view>
 					</view>
-					<view class="l-bottom-item" @tap="go_order_list(2)">
+					<view class="l-bottom-item" @tap="go_order_list(3)">
 						<image class="images3" src="../../static/notget.png" mode=""></image>
 						<view class="l-bottom-text">待收货</view>
 					</view>
-					<view class="l-bottom-item" @tap="go_order_list(3)">
+					<view class="l-bottom-item" @tap="go_order_list(4)">
 						<image class="images4" src="../../static/argue.png" mode=""></image>
 						<view class="l-bottom-text">评论</view>
 					</view>
-					<view class="l-bottom-item" @tap="go_order_list(4)">
+					<view class="l-bottom-item" @tap="go_order_list(5)">
 						<image class="images5" src="../../static/success_pay.png" mode=""></image>
 						<view class="l-bottom-text">退款/售后</view>
 					</view>
@@ -120,7 +120,7 @@
 					<image class="images" src="../../static/l-user-index.png" mode=""></image>
 					<text class="l-tool-name">个人主页</text>
 				</view>
-				<view class="l-tool-item">
+				<view class="l-tool-item" @tap="goSetting">
 					<image class="images" src="../../static/l-settion.png" mode=""></image>
 					<text class="l-tool-name">设置中心</text>
 				</view>
@@ -167,11 +167,13 @@
 	export default {
 		data () {
 			return {
-				
+				userInfo:{}
 			}
 		},
 		onLoad (option) {
-			
+			var userInfo = JSON.parse(uni.getStorageSync("userInfo")) 
+			this.userInfo = userInfo
+			console.log(this.userInfo)
 		},
 		methods: {
 			// 全部订单
@@ -182,8 +184,9 @@
 			},
 			// 我的订单
 			go_order_list(type){
+				 // 'setting/index?type='+type
 				uni.navigateTo({
-				    url: 'order/index?type='+type
+				    url:'order/index?type='+type
 				});
 			},
 			// 实名认证
@@ -196,6 +199,11 @@
 			goVisited(){
 				uni.navigateTo({
 				    url: 'replaceVisita/index'
+				});
+			},
+			goSetting(){
+				uni.navigateTo({
+				    url: 'setting/index'
 				});
 			},
 			// 地址管理
@@ -271,7 +279,7 @@
 		.l-user-detail{
 			font-size:26rpx;
 			font-family:PingFang SC;
-			font-weight:bold;
+			// font-weight:bold;
 			color:rgba(102,102,102,1);
 		}
 	}

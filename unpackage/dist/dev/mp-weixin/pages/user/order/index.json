@@ -2,7 +2,8 @@
   "navigationBarTitleText": "我的订单",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "u-tabs-swiper": "/uview-ui/components/u-tabs-swiper/u-tabs-swiper",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore",
     "order-list": "/components/my-order-list/index"
   }
 }

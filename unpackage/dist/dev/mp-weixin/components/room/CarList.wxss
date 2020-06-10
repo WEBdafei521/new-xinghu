@@ -28,7 +28,7 @@
 d
 l
 ldjadla3
-.carList-vip.data-v-2e6df8f9 {
+.carList-vip.data-v-df96f57c {
   position: absolute;
   top: -66rpx;
   padding: 0 20rpx;
@@ -39,7 +39,7 @@ ldjadla3
 d
 l
 ldjadla3
-.carList-vip .carList-vip-img.data-v-2e6df8f9 {
+.carList-vip .carList-vip-img.data-v-df96f57c {
   width: 100%;
   height: 100%;
 }

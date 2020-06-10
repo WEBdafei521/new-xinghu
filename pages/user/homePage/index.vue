@@ -1,484 +1,406 @@
 <template>
-	<view class="live-container" :style="{'height': `${windowHeight}px`}">
-		<scroll-view
-			class="scroll-view_H"
-			scroll-y="true"
-			@scroll="scroll"
-		>
-			<transiton name="fade">
-				<view :class="['live-nav', {'on': navType }]">
-					<uni-nav-bar
-						left-icon="back"
-						fixed
-						status-bar
-					>
-						<template v-if="navType">
-							<view slot="left" class="live-nav-back">
-								<u-icon name="arrow-left" color="#fff" size="30"></u-icon>
-							</view>
-						</template>
-						<template v-if="!navType">
-							<view class="live-nav-title">
-								红狐集团
-							</view>
-						</template>
-					</uni-nav-bar>
-					<template v-if="navType">
-						<image class="nav-bg" src="https://img1.starfox.cn:9001/livefs/zhuiMeng/20200527/14/56/0/room-bg.jpg" mode=""></image>
-					</template>
+	<view>
+		<image src="/static/myPage/topImg.png" style="width:100%;height:250rpx;" ></image>
+		<view class="uMsg">
+			<view class="avatar dis al_c">
+				<view class="dis cl al_c j_c" style="width:140rpx;height:200rpx">
+					<view class="zwyPortrait" style="--color:#E93340;">
+						<image  src="/static/zan.png" mode=""></image>
+					</view>
+					
+					<!-- <view style="width: 50rpx;height: 50rpx;display: flex;align-items: center;justify-content: center;">
+						<view class="zwyLive" style="--color:#D7B975;"> </view>
+					</view> -->
 				</view>
-			</transiton>
-			<view class="live-content">
-				<view class="live-user-box">
-					<view class="live-userInfo">
-						<view class="userInfo-avtar">
-							<image class="avtar-img" src="https://img1.starfox.cn:9001/livefs/zhuiMeng/20200527/14/56/0/room-bg.jpg" mode=""></image>
-							<template v-if="btnType">
-								<image class="avtar-gender" src="../../../static/live/icon-boy.png" mode=""></image>
-							</template>
-							<template v-else>
-								<image class="avtar-gender" src="../../../static/live/icon-gril.png" mode=""></image>
-							</template>
-							<text class="userInfo-name">红狐集团</text>
-						</view>
-						<view class="userInfo-btn">
-							<template v-if="btnType">
-								<button class="btn-button addInfo-btn" type="default">编辑资料</button>
-							</template>
-							<template v-else>
-								<view class="user_two_btn">
-									<template v-if="current == 0">
-										<button class="btn-button out-btn out-btn-on" type="default">+关注</button>
-									</template>
-									<template v-else>
-										<button class="btn-button out-btn" type="default">已关注</button>
-									</template>
-									<button class="btn-button out-btn share-btn" type="default">
-										<image class="share-btn-img" src="../../../static/live/icon-share.png" mode=""></image>
-										分享
-									</button>
-								</view>
-								
-							</template>
-						</view>
-					</view>
-					<view class="live-number">
-						<view class="number-text">
-							<text>ID:00005</text>
-							<view class="number-vip">
-								<!-- <template v-if="btnType">
-									<image class="vip-icon" src="../../../static/live/live-huang.png" mode=""></image>
-								</template>
-								<template v-else>
-									<image class="vip-icon" src="../../../static/live/live-huang-1.png" mode=""></image>
-								</template> -->
-								<template v-if="btnType">
-									<image class="vip-icon" src="../../../static/live/live-vip.png" mode=""></image>
-								</template>
-								<template v-else>
-									<image class="vip-icon" src="../../../static/live/live-vip-1.png" mode=""></image>
-								</template>
-								<template v-if="btnType">
-									<image class="vip-icon live-group" src="../../../static/live/live-group.png" mode=""></image>
-								</template>
-								<template v-else>
-									<image class="vip-icon live-group" src="../../../static/live/live-group-1.png" mode=""></image>
-								</template>
-							</view>
-						</view>
-						<view class="number-msg" @click="showPublic()">
-							<text>消息推送></text>
-							<image class="number-msg-img" src="../../../static/live/icon-wen.png" mode=""></image>
-						</view>
-					</view>
-					<view class="live-goods">
-						<u-cell-group>
-							<u-cell-item
-								icon-size="30"
-								bg-color="#fff"
-							>
-								<view class="live-goods-text" slot="title">
-									<image class="live-goods-img" solt="icon" src="../../../static/live/icon-goods.png" mode=""></image>
-									<text>我的商城</text>
-								</view>
-							</u-cell-item>
-						</u-cell-group>
-					</view>
-					<view class="live-textInfo">
-						<view class="textInfo-text">
-							<text>请填写个人简介，点击添加…</text>
-						</view>
-						<view class="textInfo-text">
-							<text class="text_grub">666关注</text>
-							<text>666粉丝</text>
-						</view>
-					</view>
+				<view class="edit">编辑资料</view>
+			</view>
+			<view class="name">红狐集团</view>
+			<view class="tag_v dis al_c">
+				<view>ID:0005</view>
+				<image style="margin-left: 50rpx;" src="/static/myPage/icon1.png" mode="widthFix"></image>
+				<image src="/static/myPage/icon2.png" mode="widthFix"></image>
+				<image src="/static/myPage/icon3.png" mode="widthFix"></image>
+			</view>
+			<view class="shop dis al_c">
+				<image src="" mode=""></image>
+				<view>我的商城</view>
+			</view>
+			<view class="present">请填写个人简介，点击添加…</view>
+			<view class="dis" style="margin-left: 50rpx;margin-top:20rpx;margin-bottom:30rpx;">
+				<view style="font-size:23rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">666关注</view>
+				<view style="font-size:23rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);margin-left: 30rpx;;">666粉丝</view>
+			</view>
+			<view style="width:750rpx;height:15rpx;background-color: whitesmoke;"></view>
+			<view class="top_view">
+				<view class="item" @click="switchTap(0)">
+					<view :class="['text',curindex==0?'col':'']">我的推荐</view>
+					<view :class="['bord_view',curindex==0?'act':'']"> </view>
 				</view>
-				<view class="recommend-list">
-					<view class="list-tabs">
-						<u-tabs
-							:list="navList"
-							:is-scroll="false"
-							:current="current"
-							@change="navChange"
-							bar-width="115"
-							bar-height="4"
-							active-color="#D7B975"
-							height="78"
-							font-size="30"
-							:bold="false"
-						></u-tabs>
-					</view>
-					<view class="list-content">
-						<template v-if="current == 0">
-							<live-push />
-						</template>
-						<template v-else>
-							<live-back />
-						</template>
-					</view>
+				<view class="item" style="margin-left: 149rpx;" @click="switchTap(1)">
+					<view :class="['text',curindex==1?'col':'']" >直播回放</view>
+					<view :class="['bord_view',curindex==1?'act':'']"> </view>
 				</view>
 			</view>
-		</scroll-view>
-		<!-- 弹窗 -->
-		<u-popup
-			v-model="publicVisible"
-			length="560"
-			mode="center"
-		>
-			<view class="public-popup">
-				<view class="public-popup-head">
-					<text>关注公众号</text>
-				</view>
-				<view class="public-popup-content">
-					<image class="public-img" src="../../../static/live/pop-bg.png" mode=""></image>
-				</view>
-				<view class="public-popup-text">
-					<text class="popup-text">
-						已为您复制公众号名称，请前往微信搜索
-						<text class="text-bold">
-							【明星狐直播】
-						</text>
-					</text>
-				</view>
-				<view class="public-popup-close">
-					<button class="close-btn" type="default" @click="publicVisible = false">好的</button>
-				</view>
-			</view>
-		</u-popup>
+			<swiper  
+			:style="{height:swiperheight+'px'}"
+			:indicator-dots="false" 
+			:autoplay="false" 
+			:interval="3000" 
+			:duration="1000"
+			:current="tabIndex" @change="tabChange">
+				<swiper-item>
+					<view class="swiper-item">
+						<!-- 我的推荐 -->
+						<view class="recom_list">
+							<view class="recom_item">
+								<view class="img_v dis cl">
+									<image src="" mode=""></image>
+									<view class="imgTip dis al_c">
+										<view class="tag">预告</view>
+										<view class="text">今天晚上18:00准时开始直播</view>
+									</view>
+								</view>
+								<view class="tit_v dis al_c">
+									<image src="" mode=""></image>
+									<view class="name_v dis cl j_c">
+										<view class="nm">红狐集团</view>
+										<view class="gz">已关注</view>
+									</view>
+								</view>
+							</view>
+						
+						</view>
+					</view>
+				</swiper-item>
+				<swiper-item>
+					<view class="swiper-item">
+						<!-- 直播回放 -->
+						<view class="top_tip dis al_c">
+							<image src="" mode=""></image>
+							<view class="content dis cl aro">
+								<view class="text dis al_c" style="margin-top:10rpx">
+									<view style="font-size:24rpx;">红狐集团</view>
+									<view class="tag" style="border-radius: 5px;">预告</view>
+								</view>
+								<view style="font-size:24rpx;color:rgba(51,51,51,1);margin-bottom: 10rpx;">今天九点开始直播，有新品上新哦！</view>
+							</view>
+						</view>
+						<view class="back_list dis cl">
+							<view class="back_item dis jc_bet">
+								<view class="lef dis">
+									<view class="vdo_v"></view>
+									<view class="content dis cl jc_bet">
+										<view>内容标题</view>
+										<view>858次观看 04/15</view>
+									</view>
+								</view>
+								<view class="rit dis cl jc_end">
+									<image src="/static/myPage/more.png" mode=""></image>
+								</view>
+							</view>
+						</view>
+					</view>
+				</swiper-item>
+			</swiper>
+		</view>
 	</view>
 </template>
 
 <script>
-	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
-	import LivePush from '@/components/liveHome/LivePush.vue'
-	import LiveBack from '@/components/liveHome/LiveBack.vue'
 	export default {
-		components: {
-			uniNavBar,
-			'live-push': LivePush,
-			'live-back': LiveBack,
-		},
-		data () {
+		data() {
 			return {
-				navType: 1,
-				windowHeight: 200,
-				headAttr: {
-					top: 0,
-					height: 0
-				},
-				current: 1,
-				navList: [
-					{
-						name: '主播推荐'
-					},
-					{
-						name: '直播回放'
-					},
-				],
-				// 公众号弹窗
-				publicVisible: false,
-				// btn- 测试 性别  button切换
-				btnType: 0,
-
-			}
+				curindex:0,
+				tabIndex:0,
+				swiperheight:500,
+			};
 		},
 		onLoad() {
-			// 将页面全屏 
-			uni.getSystemInfo({
-			    success: (res) => {
-			        this.windowHeight = res.windowHeight
-				}
-			})
+			
 		},
-		methods: {
-			// 滚动
-			scroll (val) {
-				const query = uni.createSelectorQuery().in(this);
-				query.select('.live-content').boundingClientRect(data => {
-				  this.navType = data.top - 40 > 0 ? 1 : 0
-				}).exec();
+		methods:{
+			switchTap(e){
+				 // console.log('e',e)
+				 this.curindex = e
+				 this.tabIndex = e
 			},
-			// tab切换
-			navChange (val) {
-				this.current = val
-			},
-			// 关注公众号弹窗
-			showPublic () {
-				let copyText = '明星狐直播'
-				this.publicVisible = true
-				uni.setClipboardData({
-					data: copyText,
-					success: function(res) {
-						uni.getClipboardData({
-							success: function(res) {
-								// uni.showToast({
-								// 	title: '已复制'
-								// })
-							}
-						});
-					}
-				});
+			tabChange(e){
+				 // console.log('e',e)
+				 this.curindex = e.detail.current
+				 this.tabIndex = e.detail.current
 			}
-		},
+		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	@import '~@/common/scss/mixins.scss';
-	.avtar-img {
-		@include setBox(140rpx, 140rpx);
+	@import '../../../common/css/index.css';
+.uMsg{
+	
+}
+.avatar{
+	height: 140rpx;
+	margin-top: -20rpx;
+	margin-left: 40rpx;
+	image{
+		width: 140rpx;
+		height: 140rpx;
 		border-radius: 50%;
+		background-color: pink;
 	}
-	.avtar-gender {
-		@include setBox(36rpx, 35rpx);
+	.edit{
+		width:181rpx;
+		height:45rpx;
+		background:rgba(177,177,181,1);
+		border-radius:25px;
+		font-size:23rpx;
+		text-align: center;
+		line-height: 45rpx;
+		font-family:PingFang SC;
+		font-weight:bold;
+		color:rgba(255,255,255,1);
+		margin-left: 45rpx;
+		margin-bottom: 10rpx;
 	}
-	.number-msg-img {
-		@include setBox(25rpx, 25rpx);
+}
+.name{
+	font-size:30rpx;
+	font-family:PingFang SC;
+	font-weight:bold;
+	color:rgba(51,51,51,1);
+	margin-left: 50rpx;
+	margin-top: 18rpx;
+}
+.tag_v{
+	margin-left: 50rpx;
+	height: 50rpx;
+	view{
+		font-size:23rpx;
+		font-family:PingFang SC;
+		font-weight:bold;
+		color:rgba(51,51,51,1);
 	}
-	.vip-icon {
-		width: 33rpx;
-		height: 25rpx;
-		&.live-group {
-			width: 22rpx;
-		}
+	image{
+		width: 27rpx;
+		height: 27rpx;
+		margin-left: 10rpx;
 	}
-	.btn-button {
-		@include resetBtn();
-		padding: 0;
-		height: 50rpx;
-		color: #fff;
-		font-size: 26rpx;
-		border-radius: 25rpx;
-		background: #B1B1B6;
-		&.addInfo-btn {
-			width: 200rpx;
-		}
-		&.out-btn {
-			width: 144rpx;
-			&.out-btn-on {
-				background: #E93340;
-			}
-		}
-		&.share-btn {
-			color: #D6B975;
-			border: 1rpx solid #D6B975;
-			background: #fff;
-			margin-left: 30rpx;
-			.share-btn-img {
-				@include setBox(26rpx, 25rpx);
-				margin-right: 10rpx;
-			}
-		}
+}
+.shop{
+	width: 750rpx;
+	height: 60rpx;
+	border-top: 1rpx solid whitesmoke;
+	border-bottom: 1rpx solid whitesmoke;
+	image{
+		width: 24rpx;
+		height: 24rpx;
+		background-color: #D7B975;
+		margin-left: 50rpx;
 	}
-	.scroll-view_H {
-		width: 100%;
-		height: 100%;
+	view{
+		font-size:23rpx;
+		font-family:PingFang SC;
+		font-weight:bold;
+		color:rgba(215,185,117,1);
+		margin-left: 20rpx;
 	}
-	.live-container {
-		::v-deep .live-nav {
-			position: relative;
-			height: 320rpx;
-			.nav-bg {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				z-index: 3;
-			}
-			.live-nav-back {
-				position: absolute;
-				left: 28rpx;
-				bottom: 30rpx;
-				z-index: 5;
-			}
-			.live-nav-title {
-				position: absolute;
-				width: 300rpx;
-				left: 50%;
-				margin-left: -150rpx;
-				text-align: center;
-			}
-			&.on {
-				.uni-navbar__content {
-					background-color: transparent !important;
-					border: 0;
-				}
-				.uni-navbar__header {
-					background-color: transparent !important;
-				}
-				.uni-icons  {
-					color: #fff !important;
-				}
-			}
-		}
-		.live-content {
-			position: relative;
-			background: #f8f8f8;
-			.live-user-box {
-				margin-bottom: 20rpx;
-				.live-userInfo,
-				.live-number,
-				.live-textInfo {
-					padding: 0 50rpx;
-					background: #fff;
-				}
-				.live-userInfo {
-					position: relative;
-					background: #fff;
-					z-index: 9;
-					@include flexBox(flex-start, flex-start);
-					.userInfo-avtar {
-						position: relative;
-						height: 160rpx;
-						@include flexBox(space-between);
-						flex-direction: column;
-					}
-					.userInfo-btn {
-						padding-left: 50rpx;
-						padding-top: 20rpx;
-					}
-					.user_two_btn {
-						@include flexBox(flex-start);
-					}
-					.userInfo-name {
-						font-size: 40rpx;
-						font-weight:bold;
-					}
-					.avtar-gender {
-						position: absolute;
-						right: 20rpx;
-						top: 70rpx;
-						z-index: 3;
-					}
-					.avtar-img {
-						margin-top: -40rpx;
-					}
-				}
-				.live-number {
-					padding: 16rpx 50rpx;
-					width: 100%;
-					@include flexBox(space-between);
-					.number-text {
-						@include flexBox(flex-start);
-						font-size: 26rpx;
-						.number-vip {
-							margin-left: 56rpx;
-							.vip-icon {
-								margin-right: 10rpx;
-							}
-						}
-					}
-					.number-msg {
-						@include flexBox(flex-start);
-						color: #b1b1b1;
-						&-img {
-							margin-left: 10rpx;
-						}
-					}
-				}
-				::v-deep .live-goods {
-					.u-cell {
-						padding: 10rpx 50rpx;
-						color: #D7B975;
-						.u-cell__left-icon-wrap,
-						.u-cell__right-icon-wrap {
-							color: #D7B975;
-						}
-					}
-					&-text {
-						@include flexBox(flex-start);
-					}
-					&-img {
-						width: 27rpx;
-						height: 25rpx;
-						margin-right: 10rpx;
-					}
-				}
-				.live-textInfo {
-					padding-bottom: 40rpx;
-					.textInfo-text {
-						padding: 20rpx 0 0;
-						.text_grub {
-							margin-right: 30rpx;
-						}
-					}
-				}
-			}
-			.recommend-list {
-				background: #fff;
-				.list-tabs {
-					@include border_bottom();
-				}
-				.list-content {
-					width: 100%;
-					padding: 20rpx 30rpx;
-				}
-			}
-		}
-		::v-deep .u-mode-center-box {
-			border-radius: 16rpx;
-		}
-	}
-	.public-popup {
-		border-radius: 16rpx;
-		&-head {
-			padding: 38rpx 0;
+}
+.present{
+	font-size:23rpx;
+	font-family:PingFang SC;
+	font-weight:bold;
+	color:rgba(51,51,51,1);
+	margin-left: 50rpx;
+	margin-top: 20rpx;
+}
+.top_view{
+	width: 750rpx;
+	height: 70rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	border-bottom: 1rpx solid whitesmoke;
+	.item{
+		width:120rpx;
+		height: 70rpx;
+		line-height: 70rpx;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		.text{
+			color: black;
+			
 			font-size: 30rpx;
-			font-weight: bold;
-			@include flexBox();
 		}
-		&-content {
-			@include flexBox();
-			.public-img {
-				@include setBox(480rpx, 365rpx);
-			}
+		.col{
+			color: #D7B975;
 		}
-		&-text {
-			@include flexBox();
-			padding: 24rpx 80rpx 41rpx;
-			.popup-text {
-				text-align: center;
-				@include flexBox();
-			}
-			.text-bold {
-				font-weight: bold;
-			}
+		.bord_view{
+			width: 120rpx;
+			height: 4rpx;
+			border-bottom: 4rpx solid #FFFFFF;
 		}
-		&-close {
-			@include flexBox();
-			padding-bottom: 30rpx;
-			.close-btn {
-				@include resetBtn();
-				width: 230rpx;
+			
+		.act{
+			border-bottom: 4rpx solid #D7B975;
+		}
+	}
+}
+.recom_list{
+	display: flex;
+	flex-wrap: wrap;
+	.recom_item{
+		width: 335rpx;
+		height: 443rpx;
+		background:rgba(247,247,247,1);
+		border-radius:14px;
+		margin: 18rpx 0 0 27rpx;
+		.img_v{
+			width: 100%;
+			height: 335rpx;
+			image{
+				width: 100%;
+				height: 335rpx;
+			}
+			.imgTip{
+				width: 100%;
 				height: 60rpx;
-				background: #D7B975;
-				border-radius: 8rpx;
-				color: #fff;
-				font-size: 30rpx;
+				margin-top: -60rpx;
+				background:rgba(0,0,0,0.2);
+				.tag{
+					width:57rpx;
+					height:24rpx;
+					background:rgba(122,169,248,1);
+					border-radius:12px;
+					font-size:16rpx;
+					font-family:PingFang SC;
+					font-weight:bold;
+					color:rgba(255,255,255,1);
+					margin-left: 18rpx;
+					text-align: center;
+					line-height: 24rpx;
+				}
+				.text{
+					font-size:18rpx;
+					font-family:PingFang SC;
+					font-weight:bold;
+					color:rgba(255,255,255,1);
+					margin-left: 10rpx;
+				}
+			}
+		
+		}
+		.tit_v{
+			width: 100%;
+			image{
+				width: 54rpx;
+				height: 54rpx;
+				border-radius: 50%;
+				margin:0 27rpx;
+				background-color: gray;
+			}
+			.name_v{
+				width: 200rpx;
+				height: 109rpx;
+				.nm{
+					font-size:24rpx;
+					font-family:PingFang SC;
+					font-weight:bold;
+					color:rgba(51,51,51,1);
+				}
+				.gz{
+					width: 63rpx;
+					height: 24rpx;
+					background:rgba(234,163,76,1);
+					border-radius:12px;
+					font-size:16rpx;
+					font-family:PingFang SC;
+					font-weight:bold;
+					color:rgba(255,255,255,1);
+					text-align: center;
+					line-height: 24rpx;
+					margin-top: 10rpx;
+				}
+				}
+			}
+	}
+}
+.top_tip{
+	width:695rpx;
+	height:100rpx;
+	background:rgba(247,247,247,1);
+	border-radius:14px;
+	margin: 18rpx 0rpx 0rpx 27rpx;
+	image{
+		width: 54rpx;
+		height: 54rpx;
+		border-radius: 50%;
+		background-color: pink;
+		margin-left: 19rpx;
+	}
+	.content{
+		height: 109rpx;
+		margin-left: 17rpx;
+		justify-content: space-around;
+	}
+}
+.back_list{
+	width: 750rpx;
+	margin-top: 27rpx;
+	.back_item{
+		width: 100%;
+		height: 135rpx;
+		justify-content: space-between;
+		.lef{
+			.vdo_v{
+				width: 253rpx;
+				height: 135rpx;
+				background-color: whitesmoke;
+				border-radius:14px;
+				margin-left: 24rpx;
+			}
+			.content{
+				height: 135rpx;
+				justify-content: space-between;
+				margin-left: 17rpx;
+				view:first-child{
+					font-size:25rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					color:rgba(51,51,51,1);
+				}
+				view:nth-child(2){
+					font-size:21rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					color:rgba(177,177,181,1);
+				}
 			}
 		}
+		.rit{
+			width: 10rpx;
+			height: 135rpx;
+			justify-content: flex-end;
+			margin-right: 45rpx;
+			image{
+				width: 10rpx;
+				height: 20rpx;
+			}
+		}
+	}
+}
+.tag{
+		width:57rpx;
+		height:24rpx;
+		background:rgba(122,169,248,1);
+		border-radius:12px;
+		font-size:16rpx;
+		font-family:PingFang SC;
+		font-weight:bold;
+		color:rgba(255,255,255,1);
+		margin-left: 18rpx;
+		text-align: center;
+		line-height: 24rpx;
 	}
 </style>

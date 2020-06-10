@@ -292,7 +292,7 @@
 		},
 		created() {
 			this.loginAction()
-			this.userInfo =JSON.parse(uni.getStorageSync("userInfo")) 
+			this.userInfo = JSON.parse(uni.getStorageSync("userInfo")) 
 			this.weichat_num = this.userInfo.weichat_num;
 		},
 		onShow() {},

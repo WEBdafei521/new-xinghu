@@ -25,32 +25,32 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.l-main.data-v-6184326c {
+.l-main.data-v-388f2f43 {
   position: relative;
   padding: 30rpx;
 }
-.l-main .l-adress-item.data-v-6184326c {
+.l-main .l-adress-item.data-v-388f2f43 {
   padding: 18rpx;
   background: #FFFFFF;
   margin-bottom: 20rpx;
   border-radius: 16rpx;
 }
-.l-main .l-adress-item .l-left .l-top.data-v-6184326c {
+.l-main .l-adress-item .l-left .l-top.data-v-388f2f43 {
   margin-bottom: 20rpx;
 }
-.l-main .l-adress-item .l-left .l-top .l-top-name.data-v-6184326c {
+.l-main .l-adress-item .l-left .l-top .l-top-name.data-v-388f2f43 {
   font-size: 30rpx;
   margin-right: 30rpx;
   font-family: PingFang SC;
   color: #333333;
 }
-.l-main .l-adress-item .l-left .l-top .l-top-phone.data-v-6184326c {
+.l-main .l-adress-item .l-left .l-top .l-top-phone.data-v-388f2f43 {
   font-size: 30rpx;
   margin-right: 30rpx;
   font-family: PingFang SC;
   color: #333333;
 }
-.l-main .l-adress-item .l-left .l-top .l-top-status.data-v-6184326c {
+.l-main .l-adress-item .l-left .l-top .l-top-status.data-v-388f2f43 {
   background: #d7b975;
   border-radius: 13rpx;
   text-align: center;
@@ -60,24 +60,24 @@
   font-family: PingFang SC;
   color: white;
 }
-.l-main .l-adress-item .l-left .l-bottom.data-v-6184326c {
+.l-main .l-adress-item .l-left .l-bottom.data-v-388f2f43 {
   font-size: 26rpx;
   font-family: PingFang SC;
   font-weight: 400;
   color: #333333;
 }
-.l-main .l-adress-item .l-right.data-v-6184326c {
+.l-main .l-adress-item .l-right.data-v-388f2f43 {
   padding: 0 16rpx 0 45rpx;
   border-left: 2rpx solid #b1b1b6;
 }
-.l-main .l-bottoms.data-v-6184326c {
+.l-main .l-bottoms.data-v-388f2f43 {
   width: 100vw;
   position: fixed;
   left: 0;
   bottom: 167rpx;
   height: 100rpx;
 }
-.l-main .l-bottoms .l-change.data-v-6184326c {
+.l-main .l-bottoms .l-change.data-v-388f2f43 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -85,7 +85,7 @@
   -webkit-justify-content: space-around;
           justify-content: space-around;
 }
-.l-main .l-bottoms .l-change .l-wx.data-v-6184326c {
+.l-main .l-bottoms .l-change .l-wx.data-v-388f2f43 {
   width: 310rpx;
   height: 98rpx;
   background: #b1b1b6;
@@ -104,12 +104,12 @@
   font-family: PingFang SC;
   color: white;
 }
-.l-main .l-bottoms .l-change .l-wx .images.data-v-6184326c {
+.l-main .l-bottoms .l-change .l-wx .images.data-v-388f2f43 {
   width: 34rpx;
   height: 35rpx;
   margin-right: 10rpx;
 }
-.l-main .l-bottoms .l-change .l-add.data-v-6184326c {
+.l-main .l-bottoms .l-change .l-add.data-v-388f2f43 {
   width: 310rpx;
   height: 98rpx;
   background: #d7b975;

@@ -1,16 +1,7 @@
 <template>
 	<view class="scroll-container" :style="{ height: `${windowHeight}px`}">
 		<view class="scroll-tabs">
-			<u-tabs
-				active-color="#D7B975"
-				bar-width="106"
-				bar-height="4"
-				height="70"
-				:list="goodsTab"
-				:is-scroll="false"
-				:current="tabIndex"
-				@change="tabChange"
-			></u-tabs>
+			<u-tabs-swiper ref="tabs" activeColor="#d7b975" @change="tabChange" :current="tabIndex" :list="goodsTab" :is-scroll="false"></u-tabs-swiper>
 		</view>
 		<view class="scroll-content">
 			<swiper
@@ -25,10 +16,23 @@
 						<scroll-view
 							class="scroll-content"
 							scroll-y="true"
-							refresher-enabled=false
+							refresher-enabled=true
 							@scrolltolower="scroll"
+							:refresher-triggered="triggered"
+							:refresher-threshold="100"
+							@refresherrefresh="onRefresh" 
+							@refresherrestore="onRestore"
 						>
 							<order-list :listData="item.list"></order-list>
+							<u-loadmore v-if="item.list.length!=0"
+													class="u-m-t-20 l-add-more" 
+													bg-color="#F8F8F8" 
+													:load-text="loadText" 
+													color="#999999" font-size="20" 
+													:status="loadStatus" 
+													@loadmore="addRandomData"
+							></u-loadmore>
+							<view class="l-zanwei"></view>
 						</scroll-view>
 					</swiper-item>
 				</block>
@@ -48,44 +52,56 @@
 		
 		data() {
 			return {
-			
+				loadText: {
+					loadmore: '轻轻上拉',
+					loading: '努力加载中',
+					nomore: '数据加载完毕~'
+				},
+				loadStatus:"loadmore",
 				triggered:true,
-				tabIndex: null,
+				tabIndex: 0,
 				goodsTab: [
 					{ 
 						name: '全部',
-						list: [1,2,3,4],
+						list: [],
 						current: 1,
-						tabName:"all"
+						tabName:"state_new1"
 					},
 					{ 
 						name: '待付款',
-						list: [1,2,3],
+						list: [],
 						current: 1,
-						tabName:"unPay"
+						tabName:"state_new"
 					},
 					{ 
 						name: '待发货',
 						list: [1,2],
 						current: 1,
-						tabName:"unSend"
+						tabName:"state_pay"
 					},
 					{
 						name: '待收货',
 						list: [1],
 						current: 1,
-						tabName:"unRecove"
+						tabName:"state_send"
 					},
 					{
 						name: '待评价',
 						list: [],
 						current: 1,
-						tabName:"unArgument"
+						tabName:"state_success"
+					},
+					{
+						name: '售后',
+						list: [],
+						current: 1,
+						tabName:"state_refund"
 					}
 				],
-				curPages: [1,1,1,1],
+				
 			}
 		},
+		
 		// 进入订单列表后，
 			// 首先发起五次u请求，
 			// 然后分别将五个状态的顶大列表请求过来，、
@@ -93,91 +109,222 @@
 		onLoad(options) {
 			// 获取上一页面的数据
 			this.tabIndex = options.type
-			this.getList(options.type)
-		
+			// 获取全部状态的列表
+			// this.getAllList()
+			this.getList(this.tabIndex)
 			this.setHeight()
 		},
+
 		// 下拉
 		onPullDownRefresh() {
-						this.onPullDownHandle()
+			// this.onPullDownHandle()
 		},
-		// 触底
-		onReachBottom(){
-			
-		},
+
 		methods: {
 		
-			onPullDownHandle(){
-				if(this.tabIndex==0){
-					
-					uni.showToast({
-						title:"全部列表项 刷新",
-						icon:"none"
-					})
-					console.log('全部列表项 刷新');
-				}else if(this.tabIndex==1){
-					uni.showToast({
-						title:"待付款列表项 刷新",
-						icon:"none"
-					})
-					console.log('待付款列表项 刷新');
-				}else if(this.tabIndex==2){
-					uni.showToast({
-						title:"待发货列表项 刷新",
-						icon:"none"
-					})
-					console.log('待发货列表项 刷新');
-				}else if(this.tabIndex==3){
-					uni.showToast({
-						title:"待收货列表项 刷新",
-						icon:"none"
-					})
-					console.log('待收货列表项 刷新');
-				}else if(this.tabIndex==4){
-					uni.showToast({
-						title:"待评价列表项 刷新",
-						icon:"none"
-					})
-					console.log('待评价列表项 刷新');
+			
+			
+			
+			// 获取所有的状态的列表
+			getAllList(){
+				for(var item of this.goodsTab){
+					item.current = 1
 				}
-		
+
+			},
+			// 下拉刷新
+			onPullDownHandle(){
+				this.getAllList()
+				
 				setTimeout(function () {
 				    uni.stopPullDownRefresh();
 				}, 1000);
 			},
-			addOrderToView(list){
-				this.goodsTab[this.tabIndex].list.push(list) 
-			},
 			
 			// scroll-view滑动时触发
 			scroll(e) {
-				// console.log(e)
-				var tabIndex = this.tabIndex
-				this.goodsTab[tabIndex].current++;
-				this.getList(tabIndex)
-				console.log("触底了")
+				this.addRandomData()
 			},
+			// 加载更多
+			addRandomData() {
+				var tabIndex = this.tabIndex
+				var currents = this.goodsTab[tabIndex].current+1
+				this.goodsTab[tabIndex].current = currents
+				this.loadStatus = 'loading'
+				this.getList(tabIndex)
+			},
+			// 单项 下拉刷新 触底加载 传入状态值
 			getList(index){
-				var page = 0;
-				if(index){
-					page = this.goodsTab[index].current 
-				}
-				var orderType = this.getOrderType(index)
 				var that = this
+				var page = this.goodsTab[index].current
+				var orderType = this.getOrderType(index)
 				var orderParmas={
 					"page": page,
 					"rows": 10,
-					"stateType":orderType
+					"stateType":orderType+"111"
 				}
 				orderListApi(orderParmas).then(res=>{
-					that.addOrderToView(res.list)
+					if(res.list.length == 0){
+						that.loadStatus = 'nomore'
+					}else{
+						that.loadStatus = 'loadmore'
+					}
+					that.addOrderToView(res.list,index)
 				})
+			},
+			// 传入数据，添加到对应的状态数据列表当中
+			addOrderToView(list,index){
+				for(var item of list){
+					if(item.state_desc =="待付款"){
+						this.goodsTab[0].list.push({
+							id: item.order.id,
+							store: '直播间购买',
+							deal: '待付款',
+							sn: item.order.pay_sn,
+							amount: item.order.amount,
+							goodsList: [
+								{
+									goodsUrl: item.extend_order_goods[0].goods_img,
+									title: item.extend_order_goods[0].goods_title,
+									type: item.extend_order_goods[0].goods_spec[0].name+','+item.extend_order_goods[0].goods_spec[0].value_name,
+									deliveryTime: '付款后30天内发货',
+									price: item.extend_order_goods[0].goods_price,
+									number: item.extend_order_goods[0].goods_num,
+								},
+							]
+						})
+						this.goodsTab[1].list.push({
+							id: item.order.id,
+							store: '直播间购买',
+							deal: '待付款',
+							sn: item.order.pay_sn,
+							amount: item.order.amount,
+							goodsList: [
+								{
+									goodsUrl: item.extend_order_goods[0].goods_img,
+									title: item.extend_order_goods[0].goods_title,
+									type: item.extend_order_goods[0].goods_spec[0].name+','+item.extend_order_goods[0].goods_spec[0].value_name,
+									deliveryTime: '付款后30天内发货',
+									price: item.extend_order_goods[0].goods_price,
+									number: item.extend_order_goods[0].goods_num,
+								},
+							]
+						})
+					}else if(item.state_desc =="待发货"){
+						this.goodsTab[0].list.push({
+							id: item.order.id,
+							store: '直播间购买',
+							deal: '待付款',
+							sn: item.order.pay_sn,
+							amount: item.order.amount,
+							goodsList: [
+								{
+									goodsUrl: item.extend_order_goods[0].goods_img,
+									title: item.extend_order_goods[0].goods_title,
+									type: item.extend_order_goods[0].goods_spec[0].name+','+item.extend_order_goods[0].goods_spec[0].value_name,
+									deliveryTime: '付款后30天内发货',
+									price: item.extend_order_goods[0].goods_price,
+									number: item.extend_order_goods[0].goods_num,
+								},
+							]
+						})
+						this.goodsTab[2].list.push({
+							id: item.order.id,
+							store: '直播间购买',
+							deal: '待付款',
+							sn: item.order.pay_sn,
+							amount: item.order.amount,
+							goodsList: [
+								{
+									goodsUrl: item.extend_order_goods[0].goods_img,
+									title: item.extend_order_goods[0].goods_title,
+									type: item.extend_order_goods[0].goods_spec[0].name+','+item.extend_order_goods[0].goods_spec[0].value_name,
+									deliveryTime: '付款后30天内发货',
+									price: item.extend_order_goods[0].goods_price,
+									number: item.extend_order_goods[0].goods_num,
+								},
+							]
+						})
+					}else if(item.state_desc =="待收货"){
+						this.goodsTab[0].list.push({
+							id: item.order.id,
+							store: '直播间购买',
+							deal: '待付款',
+							sn: item.order.pay_sn,
+							amount: item.order.amount,
+							goodsList: [
+								{
+									goodsUrl: item.extend_order_goods[0].goods_img,
+									title: item.extend_order_goods[0].goods_title,
+									type: item.extend_order_goods[0].goods_spec[0].name+','+item.extend_order_goods[0].goods_spec[0].value_name,
+									deliveryTime: '付款后30天内发货',
+									price: item.extend_order_goods[0].goods_price,
+									number: item.extend_order_goods[0].goods_num,
+								},
+							]
+						})
+						this.goodsTab[3].list.push({
+							id: item.order.id,
+							store: '直播间购买',
+							deal: '待付款',
+							sn: item.order.pay_sn,
+							amount: item.order.amount,
+							goodsList: [
+								{
+									goodsUrl: item.extend_order_goods[0].goods_img,
+									title: item.extend_order_goods[0].goods_title,
+									type: item.extend_order_goods[0].goods_spec[0].name+','+item.extend_order_goods[0].goods_spec[0].value_name,
+									deliveryTime: '付款后30天内发货',
+									price: item.extend_order_goods[0].goods_price,
+									number: item.extend_order_goods[0].goods_num,
+								},
+							]
+						})
+					}else if(item.state_desc =="交易完成"){
+						this.goodsTab[0].list.push({
+							id: item.order.id,
+							store: '直播间购买',
+							deal: '待付款',
+							sn: item.order.pay_sn,
+							amount: item.order.amount,
+							goodsList: [
+								{
+									goodsUrl: item.extend_order_goods[0].goods_img,
+									title: item.extend_order_goods[0].goods_title,
+									type: item.extend_order_goods[0].goods_spec[0].name+','+item.extend_order_goods[0].goods_spec[0].value_name,
+									deliveryTime: '付款后30天内发货',
+									price: item.extend_order_goods[0].goods_price,
+									number: item.extend_order_goods[0].goods_num,
+								},
+							]
+						})
+						this.goodsTab[4].list.push({
+							id: item.order.id,
+							store: '直播间购买',
+							deal: '待付款',
+							sn: item.order.pay_sn,
+							amount: item.order.amount,
+							goodsList: [
+								{
+									goodsUrl: item.extend_order_goods[0].goods_img,
+									title: item.extend_order_goods[0].goods_title,
+									type: item.extend_order_goods[0].goods_spec[0].name+','+item.extend_order_goods[0].goods_spec[0].value_name,
+									deliveryTime: '付款后30天内发货',
+									price: item.extend_order_goods[0].goods_price,
+									number: item.extend_order_goods[0].goods_num,
+								},
+							]
+						})
+					}else if(item.state_desc == "交易完成"){ //待评价
+						
+					}
+				}
 			},
 			// tab切换
 			tabChange (index) {
 				this.tabIndex = index
 			},
-			// swipeer切换
+			// swiper切换
 			swiperChange (val) {
 				this.tabIndex = val.detail.current
 			},
@@ -186,10 +333,6 @@
 				return this.goodsTab[index].tabName
 			}
 		},
-		watch:{
-			tabIndex (old,new1){
-			}　
-		}
 	}
 </script>
 
@@ -218,5 +361,10 @@
 			z-index: 999;
 			background: #FFFFFF;
 		}
+	}
+	.l-zanwei{
+		height: 100rpx;
+		width: 100%;
+		
 	}
 </style>

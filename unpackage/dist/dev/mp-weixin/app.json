@@ -1,6 +1,10 @@
 {
   "pages": [
+    "pages/square/backVideo/backVideo",
+    "pages/user/openService/index",
+    "pages/user/homePage/index",
     "pages/user/index",
+    "pages/user/setting/index",
     "pages/user/auth/index",
     "pages/home/index",
     "pages/home/liveHome/index",
@@ -9,7 +13,6 @@
     "pages/user/orderdetail/index",
     "pages/user/order/index",
     "pages/user/replaceVisita/index",
-    "pages/user/homePage/index",
     "pages/user/address/index",
     "pages/user/address/updata",
     "pages/square/index",
@@ -61,6 +64,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap19.json"
+  "usingComponents": {}
 }

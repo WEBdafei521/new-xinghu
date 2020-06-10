@@ -37,13 +37,16 @@
 	</view>
 </template>
 <script>
+		import {addressListApi} from "../../../common/api/api.js"
 	export default {
 		data() {
 			return {
 			}
 		},
 		onLoad() {
-
+			addressListApi().then(res=>{
+				console.log(res)
+			})
 		},
 		methods: {
 			goUpadta(){

@@ -1,1 +1,1 @@
-<view class="carList-container data-v-2e6df8f9"><block wx:if="{{vipVisible&&visible}}"><view class="carList-vip data-v-2e6df8f9"><image class="carList-vip-img data-v-2e6df8f9" src="../../static/img/car-head.png" mode="scaleToFill"></image></view></block>1231231</view>
+<view class="carList-container data-v-df96f57c"><block wx:if="{{vipVisible&&visible}}"><view class="carList-vip data-v-df96f57c"><image class="carList-vip-img data-v-df96f57c" src="../../static/img/car-head.png" mode="scaleToFill"></image></view></block>1231231</view>

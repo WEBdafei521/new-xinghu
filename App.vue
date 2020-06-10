@@ -37,4 +37,19 @@
 	.l-my-flex-start{
 		justify-content:flex-start;
 	}
+	.dis{
+		display: flex;
+	}
+	.cl{
+		flex-direction: column;
+	}
+	.al_c{
+		align-items: center;
+	}	
+	.j_c{
+		justify-content: center;
+	}
+	.aro{
+		justify-content: space-around;
+	}
 </style>

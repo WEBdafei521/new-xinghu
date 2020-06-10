@@ -3,6 +3,27 @@
 			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
 	"pages": [ //pages数组中第一项表示应用启动页oney，参考：https://uniapp.dcloud.io/collocation/pages
+		
+		{
+			"path": "pages/square/backVideo/backVideo",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/user/openService/index",
+			"style": {
+				"navigationBarTitleText":"开通特权"
+			}
+		},
+		{
+			"path": "pages/user/homePage/index",
+			"style": {
+				"navigationBarTitleText": "个人主页",
+				"navigationStyle":"custom"
+			}
+		},
 		{
 			"path": "pages/user/index",
 			"style": {
@@ -10,6 +31,15 @@
 				"navigationStyle":"custom"
 			}
 		},
+		{
+			"path": "pages/user/setting/index",
+			"style": {
+				"navigationBarTitleText": "订单列表"
+				// "enablePullDownRefresh": true
+				// "onReachBottomDistance":126 //距离底部多远时触发 单位px
+			}
+		},
+		
 		{
 			"path": "pages/user/auth/index",
 			"style": {
@@ -43,8 +73,7 @@
 				"navigationBarTitleText": "我要退货"
 			}
 		},
-		
-		
+
 		{
 			"path": "pages/user/orderdetail/index",
 			"style": {
@@ -66,13 +95,7 @@
 			}
 		},
 		
-		{
-			"path": "pages/user/homePage/index",
-			"style": {
-				"navigationBarTitleText": "个人主页",
-				"navigationStyle":"custom"
-			}
-		},
+		
 		
 		{
 			"path": "pages/user/address/index",

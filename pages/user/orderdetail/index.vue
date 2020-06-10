@@ -118,14 +118,18 @@
 </template>
 
 <script>
+	import { orderInfoApi } from '../../../common/api/api.js'
 	export default {
 		data () {
 			return {
 			
 			}
 		},
-		onLoad() {
-		  
+		onLoad(option) {
+			console.log(option)
+			orderInfoApi({id:option.id}).then(res=>{
+				console.log(res)
+			})
 		},
 		created () {},
 			

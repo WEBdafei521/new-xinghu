@@ -26,7 +26,28 @@ export const my_invitited = (parmas) => {
 export const updata_wxnum = (parmas) => {
 	return axios.post('/api/master/user/setWeChatNum', parmas)
 }
-// 首页我的邀请的信息
+// 订单列表
+export const orderListApi = (parmas) => {
+	return axios.get('/api/master/order/list', parmas,)
+}
+// 订单列表
+export const confirmReceipt = (parmas) => {
+	return axios.get('/api/master/order/confirmReceipt', parmas,)
+}
+// 支付
+export const payOrderApi = (parmas) => {
+	return axios.post('/api/master/unipay/prePayOrder', parmas,)
+}
+// 订单详情 //失败 
+export const orderInfoApi = (parmas) => {
+	return axios.post('/api/master/order/info', parmas,)
+}
+// 地址列表
+export const addressListApi = (parmas) => {
+	return axios.post('/api/master/address/list', parmas,)
+}
+
+
 /*
  * /user/getFans/user/getFans
 */
@@ -45,9 +66,9 @@ export const goodsListApi = (parmas) => {
 /**
  * 订单列表
  */
-export const orderListApi = (parmas) => {
-	return axios.get('/admin/order/list', parmas, 'admin')
-}
+// export const orderListApi = (parmas) => {
+// 	return axios.get('/admin/order/list', parmas, 'admin')
+// }
 // 选择默认地址
 export const addressDefault = (parmas) => {
 	return axios.get('/admin/address/default', parmas, 'admin')
@@ -57,10 +78,6 @@ export const createOrder = (parmas) => {
 	return axios.get('/admin/buy/createOrder', parmas, 'admin')
 }
 
-// 支付
-export const payOrderApi = (parmas) => {
-	return axios.post('/admin/unipay/prePayOrder', parmas, 'admin')
-}
 
 
 

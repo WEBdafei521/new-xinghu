@@ -1,49 +1,52 @@
 <template>
     <view class="l-my-order">
 			<view class="l-my-order-list" v-if="listData.length>0">
-				<view class="l-my-order-item" v-for="(item,index) of listData" :key="index">
+				<view class="l-my-order-item" v-for="(res, index) in listData" :key="index">
 					<!--　状态 -->
 					<view class="l-my-order-title l-my-flex-bw">
 						<view class="l-left l-my-flex-start">
 							<image class="images" src="../../static/icon/foot-zan.png" mode=""></image>
-							<text class="l-text">红狐集团旗舰店</text>
+							<text class="l-text">{{res.store}}</text>
 							<u-icon name="arrow-right" color="#333333" size="28"></u-icon>
 						</view>
-						<view class="l-order-item-status">待评价</view>
+						<view class="l-order-item-status">{{ res.deal }}</view>
 					</view>
 					<!-- 商品内容 -->
-					<view class="l-product" @tap="go_details">
+					<view class="l-product" @tap="go_details(res.id)" v-for="(item,index1) of res.goodsList" :key="index1">
 						<view class="l-product-image">
 							<image class="images" src="../../static/icon/foot-zan.png" mode=""></image>
 						</view>
 						
 						<view class="l-product-info">
 							<view class="l-product-intro">
-								<view class="l-intro">日系印花连帽工装棉服男ins潮流棉衣外套</view>       
+								<view class="l-intro">{{ item.title }}</view>       
 								<view class="l-price">
-								  <view class="l-top">￥9.9</view>
-									<view class="l-bottom"><u-icon name="close" color="#333333" size="20"></u-icon> 1</view>
+								  <view class="l-top">￥{{item.price}}</view>
+									<view class="l-bottom"><u-icon name="close" color="#333333" size="20"></u-icon> {{ item.number }}</view>
 								</view>       
 							</view>
 							<view class="l-rule">
-								灰色JM4401；XL【加棉款】
+								{{ item.type }}
 							</view>
 						</view>
 						
 					</view>
 					<!-- 商品总计 -->
 					<view class="l-product-sum">
-						<text class="l-sum">共1件商品 合计：￥</text>
-						<text class="l-price">9.9</text>
+						<text class="l-sum">共{{ totalNum(res.goodsList) }}件商品 合计：￥</text>
+						<text class="l-price">{{res.amount}}</text>
 						<text class="l-active">(免运费)</text>
 					</view>
 					<!-- 结算 -->
 					<view class="l-settlement">
 						<view class="l-left">更多</view>
 						<view class="l-right">
-							<view class="l-wuliu">查看物流</view>
-							<view class="l-souhou">申请售后</view>
-							<view class="l-yellow">立即评价</view>
+							<view class="l-souhou" v-if="res.deal =='待收货'">查看物流</view>
+							<view class="l-souhou" v-if="res.deal =='交易完成'">申请售后</view>
+							<view class="l-souhou" v-if="res.deal =='待付款'" >取消订单</view>
+							<view class="l-yellow" v-if="res.deal =='待付款'" @click="payNow(res.sn)">付款</view>
+							<view class="l-yellow" v-if="res.deal =='待收货'" @click="confrimReceipt(res.id)">确认收货</view>
+							<view class="l-yellow" v-if="res.deal =='交易完成'">立即评价</view>
 						</view>
 					</view>
 				</view>
@@ -60,7 +63,7 @@
 </template>
 
 <script>
-
+	import { confirmReceipt, payOrderApi } from '../../common/api/api.js'
 	export default {
 		props: {
 			listData: {
@@ -74,15 +77,75 @@
 			}
 		},
 		onLoad() {
+			
 		  
 		},
 		created () {},
 			
 		methods: {
-			go_details(){
-				console.log("......")
+			confrimReceipt(orderId){
+				var t = this;
+				confirmReceipt({
+					"id": orderId,
+					"state_remark": "state_remark"
+				}).then((res) => {
+					
+					this.$refs.uToast.show({
+						title: res.msg,
+						type: 'success'
+					})
+				}).catch((res) => {
+					console.log(res);
+				})
+				
+			},
+			payNow(sn){
+				var data = {
+					"order_id": 0,
+					"order_sn": sn
+				}
+				payOrderApi( data ).then((res) => {
+						let paymentData = res;
+						uni.requestPayment({
+							timeStamp: paymentData.timeStamp,
+							nonceStr: paymentData.nonceStr,
+							package: paymentData.package,
+							signType: 'MD5',
+							paySign: paymentData.paySign,
+							success: (res) => {
+								uni.showToast({
+									title: "交易成功!"
+								})
+								uni.navigateBack({
+				
+								})
+							},
+							fail: (res) => {
+								uni.showToast({
+									title: "订单生成失败",
+									icon: "faild"
+								});
+							},
+							complete: () => {
+								this.loading = false;
+							}
+						})
+				}).catch((res) => {
+					console.log(res);
+				})
+			},
+			// 总件数
+			totalNum(item) {
+				console.log(item)
+				let num = 0;
+				// item.forEach(val => {
+				// 	num += val.number;
+				// });
+				return num;
+			},
+			go_details(id){
 				uni.navigateTo({
-					url:"../orderdetail/index"
+					url:"../orderdetail/index?id="+id
 				})
 			}
 		}
@@ -164,15 +227,18 @@
 					}
 				}
 				.l-product-info{
+					width: 60%;
 					font-size:24rpx;
 					font-family:PingFang SC;
 					font-weight:sample;
 					color:rgba(153,153,153,1);
 					margin-left: 20rpx;
 					.l-product-intro{
+						
 						display: flex;
 						flex-direction: row;
 						flex-flow: nowrap;
+						justify-content: space-between;
 						
 						.l-intro{
 							font-size:26rpx;
@@ -257,6 +323,7 @@
 					}
 					.l-yellow{
 						background:rgba(215,185,117,1);
+						border:1px solid rgba(215,185,117,1);
 						color: #ffffff;
 						border-radius:25rpx;
 					}
