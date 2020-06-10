@@ -3,12 +3,17 @@
 			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
 	"pages": [ //pages数组中第一项表示应用启动页oney，参考：https://uniapp.dcloud.io/collocation/pages
-		
 		{
-			"path": "pages/square/backVideo/backVideo",
+			"path": "pages/user/index",
 			"style": {
 				"navigationBarTitleText": "我的",
 				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/square/backVideo/backVideo",
+			"style": {
+				"navigationBarTitleText": "直播回放"
 			}
 		},
 		{
@@ -24,13 +29,7 @@
 				"navigationStyle":"custom"
 			}
 		},
-		{
-			"path": "pages/user/index",
-			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationStyle":"custom"
-			}
-		},
+		
 		{
 			"path": "pages/user/setting/index",
 			"style": {

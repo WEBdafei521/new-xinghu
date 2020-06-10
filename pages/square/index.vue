@@ -26,7 +26,7 @@
 							>
 								<view class="l-main-list">
 									<view class="l-all-list">
-										<view class="l-all-item" v-for="(item,index) of item.list" :key="index">
+										<view class="l-all-item" @tap="goBackVideo" v-for="(item,index) of item.list" :key="index">
 											<!-- 回放 -->
 											<view class="l-top">
 												<!-- back img -->
@@ -132,6 +132,11 @@
 			}, 2000)
 		},
 		methods: {
+			goBackVideo(){
+				uni.navigateTo({
+					url:"./backVideo/backVideo"
+				})
+			},
 			swiperChange (val) {
 				this.tabIndex = val.detail.current
 			},

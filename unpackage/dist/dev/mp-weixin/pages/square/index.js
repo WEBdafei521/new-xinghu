@@ -137,7 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var lpInput = function lpInput() {__webpack_require__.e(/*! require.ensure | components/common/LpInput */ "components/common/LpInput").then((function () {return resolve(__webpack_require__(/*! @/components/common/LpInput.vue */ 224));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var lpInput = function lpInput() {__webpack_require__.e(/*! require.ensure | components/common/LpInput */ "components/common/LpInput").then((function () {return resolve(__webpack_require__(/*! @/components/common/LpInput.vue */ 224));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -271,6 +271,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     }, 2000);
   },
   methods: {
+    goBackVideo: function goBackVideo() {
+      uni.navigateTo({
+        url: "./backVideo/backVideo" });
+
+    },
     swiperChange: function swiperChange(val) {
       this.tabIndex = val.detail.current;
     },
@@ -298,6 +303,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     scrollPage: function scrollPage() {
       console.log("----");
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

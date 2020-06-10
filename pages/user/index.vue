@@ -147,7 +147,7 @@
 					<image class="images" src="../../static/l-costomer.png" mode=""></image>
 					<text class="l-tool-name">联系客服</text>
 				</view> -->
-				<view class="l-tool-item">
+				<view class="l-tool-item" @tap="goOpenServer">
 					<image class="images" src="../../static/l-VIP.png" mode=""></image>
 					<text class="l-tool-name">开通服务</text>
 				</view>
@@ -187,6 +187,12 @@
 				 // 'setting/index?type='+type
 				uni.navigateTo({
 				    url:'order/index?type='+type
+				});
+			},
+			//开通服务
+			goOpenServer(){
+				uni.navigateTo({
+				    url: 'openService/index'
 				});
 			},
 			// 实名认证

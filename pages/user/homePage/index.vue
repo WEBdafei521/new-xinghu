@@ -1,11 +1,11 @@
 <template>
 	<view>
-		<image src="/static/myPage/topImg.png" style="width:100%;height:250rpx;" ></image>
+		<image src="../../../static/myPage/topImg.png" style="width:100%;height:250rpx;" ></image>
 		<view class="uMsg">
 			<view class="avatar dis al_c">
 				<view class="dis cl al_c j_c" style="width:140rpx;height:200rpx">
 					<view class="zwyPortrait" style="--color:#E93340;">
-						<image  src="/static/zan.png" mode=""></image>
+						<image  src="../../../static/zan.png" mode=""></image>
 					</view>
 					
 					<!-- <view style="width: 50rpx;height: 50rpx;display: flex;align-items: center;justify-content: center;">
@@ -17,9 +17,9 @@
 			<view class="name">红狐集团</view>
 			<view class="tag_v dis al_c">
 				<view>ID:0005</view>
-				<image style="margin-left: 50rpx;" src="/static/myPage/icon1.png" mode="widthFix"></image>
-				<image src="/static/myPage/icon2.png" mode="widthFix"></image>
-				<image src="/static/myPage/icon3.png" mode="widthFix"></image>
+				<image style="margin-left: 50rpx;" src="../../../static/myPage/icon1.png" mode="widthFix"></image>
+				<image src="../../../static/myPage/icon2.png" mode="widthFix"></image>
+				<image src="../../../static/myPage/icon3.png" mode="widthFix"></image>
 			</view>
 			<view class="shop dis al_c">
 				<image src="" mode=""></image>
@@ -54,7 +54,7 @@
 						<view class="recom_list">
 							<view class="recom_item">
 								<view class="img_v dis cl">
-									<image src="" mode=""></image>
+									<image src="../../../static/icon/no_order_list.png" mode=""></image>
 									<view class="imgTip dis al_c">
 										<view class="tag">预告</view>
 										<view class="text">今天晚上18:00准时开始直播</view>
@@ -76,7 +76,7 @@
 					<view class="swiper-item">
 						<!-- 直播回放 -->
 						<view class="top_tip dis al_c">
-							<image src="" mode=""></image>
+							<image src="../../../static/icon/no_order_list.png" mode=""></image>
 							<view class="content dis cl aro">
 								<view class="text dis al_c" style="margin-top:10rpx">
 									<view style="font-size:24rpx;">红狐集团</view>
@@ -95,7 +95,7 @@
 									</view>
 								</view>
 								<view class="rit dis cl jc_end">
-									<image src="/static/myPage/more.png" mode=""></image>
+									<image src="../../../static/myPage/more.png" mode=""></image>
 								</view>
 							</view>
 						</view>

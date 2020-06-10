@@ -330,6 +330,12 @@ var _default =
         url: 'order/index?type=' + type });
 
     },
+    //开通服务
+    goOpenServer: function goOpenServer() {
+      uni.navigateTo({
+        url: 'openService/index' });
+
+    },
     // 实名认证
     goAuth: function goAuth() {
       uni.navigateTo({

@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/user/index",
     "pages/square/backVideo/backVideo",
     "pages/user/openService/index",
     "pages/user/homePage/index",
-    "pages/user/index",
     "pages/user/setting/index",
     "pages/user/auth/index",
     "pages/home/index",
