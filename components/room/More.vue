@@ -8,7 +8,7 @@
 				<image class="btn-img" src="../../static/icon/more-1.png" mode="scaleToFill"></image>
 				<text>添加至转播</text>
 			</view>
-			<view class="more-list-btn">
+			<view class="more-list-btn" @tap="share_image">
 				<image class="btn-img" src="../../static/icon/more-2.png" mode="scaleToFill"></image>
 				<text>分享</text>
 			</view>
@@ -28,6 +28,11 @@
 	export default {
 		data () {
 			return {}
+		},
+		methods:{
+			share_image(){
+				this.$emit("open_share")
+			}
 		}
 	}
 </script>

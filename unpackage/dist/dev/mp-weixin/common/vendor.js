@@ -8782,11 +8782,11 @@ var index_esm = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.createOrder = exports.addressDefault = exports.goodsListApi = exports.walletApi = exports.addressListApi = exports.orderInfoApi = exports.payOrderApi = exports.confirmReceipt = exports.orderListApi = exports.updata_wxnum = exports.my_invitited = exports.live_list = exports.noticeList = exports.bannerList = exports.loginApi = void 0;var _Ajax = _interopRequireDefault(__webpack_require__(/*! ../plugin/Ajax.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.createOrder = exports.addressDefault = exports.goodsListApi = exports.walletApi = exports.roomGoodsApi = exports.addressListApi = exports.orderInfoApi = exports.payOrderApi = exports.confirmReceipt = exports.orderListApi = exports.updata_wxnum = exports.my_invitited = exports.live_list = exports.noticeList = exports.bannerList = exports.loginApi = void 0;var _Ajax = _interopRequireDefault(__webpack_require__(/*! ../plugin/Ajax.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * 登录接口
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        * 登录接口
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
 var loginApi = function loginApi(parmas) {
   return _Ajax.default.post('/api/master/pub/login', parmas);
 };
@@ -8830,6 +8830,12 @@ exports.payOrderApi = payOrderApi;var orderInfoApi = function orderInfoApi(parma
 exports.orderInfoApi = orderInfoApi;var addressListApi = function addressListApi(parmas) {
   return _Ajax.default.post('/api/master/address/list', parmas);
 };
+// 地址列表
+exports.addressListApi = addressListApi;var roomGoodsApi = function roomGoodsApi(parmas) {
+  return _Ajax.default.post('/api/master/live/getLiveRoomGoodsList', parmas);
+};
+
+
 
 
 /*
@@ -8837,7 +8843,7 @@ exports.orderInfoApi = orderInfoApi;var addressListApi = function addressListApi
    */
 /*
        * 钱包
-      */exports.addressListApi = addressListApi;
+      */exports.roomGoodsApi = roomGoodsApi;
 var walletApi = function walletApi(parmas) {
   return _Ajax.default.get('/admin/order/stat', parmas, 'admin');
 };

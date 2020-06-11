@@ -46,6 +46,12 @@ export const orderInfoApi = (parmas) => {
 export const addressListApi = (parmas) => {
 	return axios.post('/api/master/address/list', parmas,)
 }
+// 地址列表
+export const roomGoodsApi = (parmas) => {
+	return axios.post('/api/master/live/getLiveRoomGoodsList', parmas,)
+}
+
+
 
 
 /*

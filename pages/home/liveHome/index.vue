@@ -119,18 +119,7 @@
 					<button class="foot-input-key-button" type="default" @click="sendMsg">发送</button>
 				</view>
 			</template>
-			
-			
 		</view>
-		
-		<!-- 更多 -->
-		<u-popup
-			class="room-popup"
-			v-model="moreVisible"
-			mode="bottom"
-		>
-			<foot-more />
-		</u-popup>
 		
 		<!-- 橱窗商品 -->
 		<u-popup
@@ -142,17 +131,47 @@
 				<car-list :visible="carVisible" @buyGoods="addGoods"/>
 			</template>
 		</u-popup>
+		
+		<!-- 更多 -->
+		<u-popup
+			class="room-popup"
+			v-model="moreVisible"
+			mode="bottom"
+		>
+			<foot-more @open_share="open_share"/>
+		</u-popup>
+		
+		<!-- 快捷下单 规格 -->
+		<u-popup
+			class="room-popup"
+			v-model="buyVisible"
+			mode="bottom"
+		>
+			<template v-if="buyVisible">
+				<buy-Popup
+					:visible="buyVisible"
+					:goodsData="goodsInfo"
+					@close="buyVisible = false"
+				/>
+			</template>
+		</u-popup>
+		<view class="l-showImages" v-if="share_status">
+			<show-image @close_share_image="close_share_image"></show-image>
+		</view>
+	
 	</view>
 </template>
-
 <script>
-	import More from '../../../components/room/More.vue'
 	import CarList from '../../../components/room/CarList.vue'
+	import More from '../../../components/room/More.vue'
+	import BuyPopup from '../../../components/room/BuyPopup.vue'
+	import showImage from '../../../components/uni-canvas/uni-canvas.vue'
 	export default {
-	
 		components: {
-			'foot-more': More,
 			'car-list': CarList,
+			'foot-more': More,
+			'buy-Popup': BuyPopup,
+			'show-image':showImage
 		},
 		data() {
 			return {
@@ -160,13 +179,19 @@
 					top: 44,
 				},
 				// 底部弹框 显示/隐藏
-				moreVisible:false,
 				carVisible: false,
+				moreVisible: false,
+				// 二级页弹窗状态
+				buyVisible: false,
+				
 				// 单个商品的信息
 				goodsInfo:{},
 				// 评论输入框的显示/隐藏
 				is_active:false,
 				is_input:false,
+				
+				// share 图片 状态
+				share_status:false,
 				
 				// 索引id
 				tolast: "",
@@ -192,17 +217,28 @@
 			// this.loginAction()
 		},
 		methods: {
+			// 打开关闭 分享框
+			open_share(){
+				this.share_status = true
+			},
+			close_share_image(){
+				this.share_status = false
+			},
+			goBackVideo(){
+				console.log("----")
+				uni.navigateTo({
+					url:'../../pages/square/backVideo/backVideo'
+				})
+			},
 			goHomePage(){
 				uni.navigateTo({
 					url:"../../user/homePage/index"
 				})
 			},
 			goBack(){
-				console.log("----")
 				uni.navigateBack()
 			},
 			more_product(){
-				console.log("----")
 				this.carVisible = true
 			},
 			// 购买
@@ -261,6 +297,16 @@
 </script>
 
 <style lang="scss" scoped>
+	.l-showImages{
+		position: fixed;
+		width: 507rpx;
+		height: 664rpx;
+		background: #FFFFFF;
+		top: 200rpx;
+		left: 121.5rpx;
+		z-index: 99999999999999;
+	}
+		@import '~@/common/scss/mixins.scss';
 	.scroll-view_room{
 		height: 370rpx;
 		width: 100%;
@@ -571,4 +617,5 @@
 			}
 		}
 	}
+
 </style>

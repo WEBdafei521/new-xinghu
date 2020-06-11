@@ -11,6 +11,15 @@
 			}
 		},
 		{
+			"path": "pages/home/liveHome/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"disableScroll": true
+			}
+		},
+		
+		{
 			"path": "pages/square/backVideo/backVideo",
 			"style": {
 				"navigationBarTitleText": "直播回放"
@@ -52,14 +61,7 @@
 				"enablePullDownRefresh": true
 			}
 		},
-		{
-			"path": "pages/home/liveHome/index",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationStyle": "custom",
-				"disableScroll": true
-			}
-		},
+		
 		{
 			"path": "pages/user/returnMoney/index",
 			"style": {

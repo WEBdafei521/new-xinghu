@@ -25,6 +25,24 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.l-showImages.data-v-5757b0fe {
+  position: fixed;
+  width: 507rpx;
+  height: 664rpx;
+  background: #FFFFFF;
+  top: 200rpx;
+  left: 121.5rpx;
+  z-index: 99999999999999;
+}
+/* 尺寸大小 */
+/* 颜色 */
+/* 设置宽高 */
+/*  flex布局 */
+/* 下 1像素边框 */
+/* 上像素边框 */
+/* 右 1像素边框 */
+/* 溢出隐藏... */
+/* 重置按钮样式 */
 .scroll-view_room.data-v-5757b0fe {
   height: 370rpx;
   width: 100%;

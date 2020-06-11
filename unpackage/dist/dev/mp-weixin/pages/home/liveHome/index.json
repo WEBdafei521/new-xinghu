@@ -5,7 +5,9 @@
   "usingComponents": {
     "u-icon": "/uview-ui/components/u-icon/u-icon",
     "u-popup": "/uview-ui/components/u-popup/u-popup",
+    "car-list": "/components/room/CarList",
     "foot-more": "/components/room/More",
-    "car-list": "/components/room/CarList"
+    "buy-popup": "/components/room/BuyPopup",
+    "show-image": "/components/uni-canvas/uni-canvas"
   }
 }
