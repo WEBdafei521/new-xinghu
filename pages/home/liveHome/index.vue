@@ -10,12 +10,12 @@
 		<!-- title -->
 		<view class="l-title l-my-flex-start">
 			<!-- 点赞提示 -->
-			<view @tap="goBack">
+			<view>
 				<image class="l-images" v-if="!is_active" src="../../../static/l_attention.png" mode=""></image>
 			</view>
-			<u-icon name="arrow-left" color="#ffffff" size="28"></u-icon>
+			<u-icon @tap="goBack" name="arrow-left" color="#ffffff" size="28"></u-icon>
 			<view class="l-user-title-info l-my-flex-start">
-				<image class="l-user-title-image" src="../../../static/icon/foot-liwu.png" mode=""></image>
+				<image @tap="goHomePage" class="l-user-title-image" src="../../../static/icon/foot-liwu.png" mode=""></image>
 				<view class="l-user-name-info">
 					<view class="l-top">蓝狐集团</view>
 					<view  class="l-bottom">1520人爱看</view>
@@ -192,7 +192,13 @@
 			// this.loginAction()
 		},
 		methods: {
+			goHomePage(){
+				uni.navigateTo({
+					url:"../../user/homePage/index"
+				})
+			},
 			goBack(){
+				console.log("----")
 				uni.navigateBack()
 			},
 			more_product(){

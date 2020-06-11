@@ -15,7 +15,7 @@
 		<view class="player_view">
 			<!-- 顶部信息 -->
 			<view class="tp_user">
-				<image src="" mode=""></image>
+				<image @tap="goHomePage" src="" mode=""></image>
 				<view class="content">
 					<view class="text">星狐集团</view>
 					<view class="text" style="font-size:22rpx">1300人观看</view>
@@ -148,7 +148,13 @@
 			},
 			slideChange(e){
 				console.log('滑动',e)
-			}	
+			},
+			// 前往个人主页
+			goHomePage(){
+				uni.navigateTo({
+					url:"../../user/homePage/index"
+				})
+			}
 		}
 	}
 </script>

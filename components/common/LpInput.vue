@@ -34,6 +34,7 @@
 		methods: {
 			goSearch(e){
 				this.$emit("search_inp",this.keyword)
+				this.keyword = ""
 			},
 		},
 	}

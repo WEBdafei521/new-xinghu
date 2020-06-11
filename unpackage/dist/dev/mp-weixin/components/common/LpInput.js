@@ -150,6 +150,7 @@ var _default =
   methods: {
     goSearch: function goSearch(e) {
       this.$emit("search_inp", this.keyword);
+      this.keyword = "";
     } } };exports.default = _default;
 
 /***/ }),

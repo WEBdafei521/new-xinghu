@@ -218,7 +218,13 @@ __webpack_require__.r(__webpack_exports__);
     // this.loginAction()
   },
   methods: {
+    goHomePage: function goHomePage() {
+      uni.navigateTo({
+        url: "../../user/homePage/index" });
+
+    },
     goBack: function goBack() {
+      console.log("----");
       uni.navigateBack();
     },
     more_product: function more_product() {
